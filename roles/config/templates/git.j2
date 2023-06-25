@@ -1,0 +1,39 @@
+[user]
+    username = {{ git_user }}
+    name = {{ git_name }}
+    email = {{ git_email }}
+    signingkey = {{ git_gpg_key }}
+[credential]
+    helper = cache
+[commit]
+    gpgsign = false
+[gpg]
+    program = /usr/bin/gpg
+[core]
+    autocrlf = false
+    editor = nvim
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    excludesfile = ~/.gitignore
+[alias]
+    br = branch
+    co = checkout
+    ci = commit
+    cm = commit -m
+    d = diff
+    dv = difftool -t vimdiff -y
+    gl = config --global -l
+    last = log -1 HEAD --stat
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    ll = log --oneline
+    l = log
+    me = merge
+    mf = merge -ff-only
+    p = push
+    pl = pull --rebase
+    ri = rebase -i HEAD~10
+    rv = remote -v
+    se = !git rev-list --all | xargs git grep -F
+    st = status -sb
+    unstage = reset HEAD --
+[help]
+    autocorrect = 20

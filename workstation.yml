@@ -1,0 +1,11 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles: 
+    - packages
+    - config
+    - system
+
+  vars_files: 
+    - vars/git.yml
+    - vars/os.yml

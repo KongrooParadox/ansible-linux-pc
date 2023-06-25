@@ -1,6 +1,35 @@
-# Ansible Playbook : Setup Linux Workstation
+# Linux Workstation
 
-Post Linux Installation Ansible playbook to provision workstation
+My config and tools for linux.
+
+Tested only with Debian based [Kaisen Linux](https://kaisenlinux.org/)
+
+# TODO
+
+* firefox
+* nvim
+* kvm (to test)
+* k8s tools
+* packer
+* vault
+* docker
+* terraform
+* zellij
+* spotify
+* vagrant
+* asdf
+* starship
+* dns setup
+* nodejs
+* Hugo
+* cloud CLI
+    * aws
+    * gcp
+    * scaleway
+* dotfiles
+    * gitconfig
+    * nvim 
+    * starship
 
 # Pre-requisites
 1. Install Ansible
