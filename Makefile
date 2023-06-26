@@ -3,7 +3,7 @@ init:
 	apt full-upgrade -y
 	apt autoremove --purge -y
 	apt install -y python3-pip
-	# Diasble ansible that is already installed by default
+	# Disable ansible that is already installed by default
 	# pip3 install -r requirements.txt
 	ansible-galaxy install -r requirements.yml
 
@@ -21,3 +21,4 @@ debug:
 
 verbose:
 	ansible-playbook -vvv workstation.yml --tags all
+

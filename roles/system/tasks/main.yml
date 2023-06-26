@@ -5,7 +5,7 @@
     name: "{{ user }}"
     comment: "{{ user }}"
     groups: "{{ user }},cdrom,floppy,audio,dip,video,plugdev,users,netdev,docker,bluetooth,lpadmin,scanner,vboxusers,libvirt,gns3,sudo"
-    shell: "/bin/zsh"
+    shell: /bin/zsh
 
 - name: "Create sudo rules for user {{ user }}"
   become: true
@@ -21,7 +21,7 @@
   ansible.builtin.file:
     path: "/home/{{ user }}/.ssh"
     state: directory
-    mode: "0755"
+    mode: 0755
     owner: "{{ user }}"
     group: "{{ user }}"
 
@@ -30,6 +30,6 @@
   ansible.builtin.openssh_keypair:
     path: "/home/{{ user }}/.ssh/id_{{ user }}_{{ ansible_hostname }}"
     type: ed25519
-    mode: "0400"
+    mode: 0400
     owner: "{{ user }}"
     group: "{{ user }}"

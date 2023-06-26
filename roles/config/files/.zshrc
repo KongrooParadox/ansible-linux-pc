@@ -15,10 +15,17 @@ sudo() { if [[ $@ == "apt upgrade" ]]; then command sudo apt full-upgrade; else 
 apt() { if [[ $@ == "upgrade" ]]; then command apt full-upgrade; else command apt "$@"; fi; }
 
 ########## Kaisen settings, end ##########
-
 ############## Aliases ###################
 alias l='ls -lra --color=auto'
 alias v='nvim'
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -lh'
 alias lll='ls --color=auto -lh | less'
+############## completion #################
+autoload -Uz compinit
+compinit
+
+# kubectl
+source <(kubectl completion zsh)
+eval "$(direnv hook zsh)"
+eval "$(starship init zsh)"

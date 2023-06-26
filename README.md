@@ -34,7 +34,7 @@ Tested only with Debian based [Kaisen Linux](https://kaisenlinux.org/)
 # Pre-requisites
 1. Install Ansible
 
-Run `make init` to install Ansible and it's dependencies.
+As `root` user, run `make init` to install Ansible and it's dependencies.
 
 You can run `ansible --version` to confirm.
 

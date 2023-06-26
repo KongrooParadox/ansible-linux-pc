@@ -1,5 +1,5 @@
 ---
-- name: "Configure git"
+- name: Configure git
   become: true
   become_user: "{{ user }}"
   ansible.builtin.template:
@@ -7,11 +7,44 @@
     dest: "/home/{{ user }}/.gitconfig"
   tags: config
 
-- name: "Configure zsh"
+- name: Configure zsh
   become: true
   ansible.builtin.copy:
     src: .zshrc
-    dest: "/home/{{ user }}"
+    dest: "/home/{{ user }}/"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  tags: config
+
+- name: Create Neovim config folder
+  become: true
+  ansible.builtin.file:
+    path: "/home/{{ user }}/.config/nvim"
+    state: directory
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0755
+  tags: config
+
+- name: Configure Neovim
+  become: true
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/home/{{ user }}/.config/nvim/"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: 0644
+  with_items:
+    - init.lua
+    - set.lua
+  tags: config
+
+- name: Configure Starship
+  become: true
+  ansible.builtin.copy:
+    src: starship.toml
+    dest: "/home/{{ user }}/.config/"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: 0644
