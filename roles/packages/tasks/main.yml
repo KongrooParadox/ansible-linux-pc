@@ -4,12 +4,13 @@
   ansible.builtin.apt:
     name: "*"
     state: latest
+    only_upgrade: true
     update_cache: true
   tags: packages
 
 - name: Add Google Cloud repository key
   ansible.builtin.apt_key:
-    url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg" 
+    url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
     state: present
   become: true
 
@@ -33,7 +34,7 @@
 
 - name: Add Hashicorp repository key
   ansible.builtin.apt_key:
-    url: "https://apt.releases.hashicorp.com/gpg" 
+    url: "https://apt.releases.hashicorp.com/gpg"
     state: present
   become: true
 
@@ -57,32 +58,30 @@
     dest: /usr/local/bin/nvim
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0755
+    mode: "0755"
   tags: packages
 
 - name: Query Github API for the latest Starship release
-  run_once: true
-  ansible.builtin.shell: |
-    curl -s https://api.github.com/repos/starship/starship/releases/latest |
-    jq -r ".tag_name"    
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/starship/starship/releases/latest
+    return_content: true
   register: starship_release
-  changed_when: false
   tags: packages
 
 - name: Install Starship latest release
   become: true
   ansible.builtin.unarchive:
-    src: "https://github.com/starship/starship/releases/download/{{ starship_release.stdout }}/starship-x86_64-unknown-linux-gnu.tar.gz"
+    src: "https://github.com/starship/starship/releases/download/{{ starship_release.json.tag_name }}/starship-x86_64-unknown-linux-gnu.tar.gz"
     remote_src: true
     dest: /usr/local/bin/
-    mode: 0755
+    mode: "0755"
   tags: packages
 
 - name: Install tools of the trade
   become: true
   ansible.builtin.apt:
     name: "{{ packages }}"
-    state: latest
+    state: present
     autoclean: true
     force: true
   tags: packages

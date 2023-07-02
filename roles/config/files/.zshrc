@@ -15,6 +15,13 @@ sudo() { if [[ $@ == "apt upgrade" ]]; then command sudo apt full-upgrade; else 
 apt() { if [[ $@ == "upgrade" ]]; then command apt full-upgrade; else command apt "$@"; fi; }
 
 ########## Kaisen settings, end ##########
+
+############## History ###################
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt SHARE_HISTORY
+
 ############## Aliases ###################
 alias l='ls -lra --color=auto'
 alias v='nvim'

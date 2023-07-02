@@ -1,11 +1,12 @@
 ---
 - hosts: localhost
+  name: Install linux workstation
   remote_user: root
-  roles: 
+  roles:
     - packages
     - config
     - system
 
-  vars_files: 
+  vars_files:
     - vars/git.yml
     - vars/os.yml

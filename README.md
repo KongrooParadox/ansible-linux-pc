@@ -6,30 +6,30 @@ Tested only with Debian based [Kaisen Linux](https://kaisenlinux.org/)
 
 # TODO
 
-* firefox
-* nvim
-* kvm (to test)
-* k8s tools
-* packer
-* vault
-* docker
-* terraform
-* zellij
-* spotify
-* vagrant
-* asdf
-* starship
-* dns setup
-* nodejs
-* Hugo
-* cloud CLI
-    * aws
-    * gcp
-    * scaleway
-* dotfiles
-    * gitconfig
-    * nvim 
-    * starship
+[ ] firefox
+[x] nvim
+[ ] kvm (to test)
+[x] k8s tools
+[ ] packer
+[ ] vault
+[ ] docker
+[ ] terraform
+[ ] zellij
+[x] spotify
+[ ] vagrant
+[ ] asdf
+[x] starship
+[] dns setup
+[ ] nodejs
+[ ] Hugo
+[ ] cloud CLI
+    [ ] aws
+    [ ] gcp
+    [ ] scaleway
+[x] dotfiles
+    [x] gitconfig
+    [x] nvim 
+    [x] starship
 
 # Pre-requisites
 1. Install Ansible

@@ -9,6 +9,21 @@ vim.g.maplocalleader = ' '
 -- set showbreak=↪\ set listchars=tab:→\ ,eol:↲,nbsp:␣,trail:•,extends:⟩,precedes:⟨,space:•
 -- :set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
 -- :set list
+vim.opt.list = true
+vim.opt.showbreak = "↪"
+vim.opt.listchars = { tab="→ ", eol="↲", nbsp="␣", trail="~", extends="⟩", precedes="⟨", space="•"}
+
+-- Delete trailing whitespace on save
+vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+    pattern = {"*"},
+    callback = function()
+        local save_cursor = vim.fn.getpos(".")
+        vim.cmd([[%s/\s\+$//e]])
+        vim.fn.setpos(".", save_cursor)
+    end,
+})
+
+require('config.set')
 
 -- Install packer
 local install_path = vim.fn.stdpath 'data' .. '/site/pack/packer/start/packer.nvim'
@@ -72,7 +87,16 @@ require('packer').startup(function(use)
   -- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make', cond = vim.fn.executable 'make' == 1 }
   use 'ThePrimeagen/vim-be-good'
-
+use 'nvim-tree/nvim-web-devicons'
+  use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+          require("nvim-surround").setup({
+              -- Configuration here, or leave empty to use defaults
+          })
+      end
+  })
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -297,19 +321,48 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-
+  rust_analyzer = {},
+  ansiblels = {
+    filetypes = {
+      "yaml.ansible"
+    },
+    settings = {
+      ansible = {
+        ansible = {
+          path = "ansible",
+          useFullyQualifiedCollectionNames = true
+        },
+        ansibleLint = {
+          enabled = true,
+          path = "ansible-lint"
+        },
+        executionEnvironment = {
+          enabled = false
+        },
+        python = {
+          interpreterPath = "python3"
+        },
+        completion = {
+          provideRedirectModules = true,
+          provideModuleOptionAliases = true
+        }
+      },
+    },
+    on_attach = on_attach
+  },
+  bashls = {},
+  gopls = {},
+  docker_compose_language_service = {},
+  dockerls = {},
+  terraformls = {},
+  yamlls = {},
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
       telemetry = { enable = false },
       diagnostics = {
-              globals = { 'vim' }
-          },
+        globals = { 'vim' }
+      },
     },
   },
 }

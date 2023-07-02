@@ -5,6 +5,7 @@
   ansible.builtin.template:
     src: git.j2
     dest: "/home/{{ user }}/.gitconfig"
+    mode: "0600"
   tags: config
 
 - name: Configure zsh
@@ -14,30 +15,20 @@
     dest: "/home/{{ user }}/"
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0644
-  tags: config
-
-- name: Create Neovim config folder
-  become: true
-  ansible.builtin.file:
-    path: "/home/{{ user }}/.config/nvim"
-    state: directory
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: 0755
+    mode: "0644"
   tags: config
 
 - name: Configure Neovim
   become: true
   ansible.builtin.copy:
-    src: "{{ item }}"
-    dest: "/home/{{ user }}/.config/nvim/"
+    src: "{{ item.name }}"
+    dest: "/home/{{ user }}/.config/{{ item.dest_dir }}/"
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0644
-  with_items:
-    - init.lua
-    - set.lua
+    mode: "0644"
+  loop:
+    - { name: 'init.lua', dest_dir: 'nvim' }
+    - { name: 'set.lua', dest_dir: 'nvim/lua/config' }
   tags: config
 
 - name: Configure Starship
@@ -47,5 +38,5 @@
     dest: "/home/{{ user }}/.config/"
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: 0644
+    mode: "0644"
   tags: config
