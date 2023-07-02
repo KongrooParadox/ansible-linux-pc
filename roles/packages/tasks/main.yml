@@ -1,0 +1,114 @@
+---
+- name: Ensure packages are up-to-date
+  become: true
+  ansible.builtin.apt:
+    name: "*"
+    state: present
+    update_cache: true
+  tags: packages
+
+- name: Add Google Cloud repository key
+  ansible.builtin.apt_key:
+    url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
+    state: present
+  become: true
+
+- name: Add Google Cloud repository
+  ansible.builtin.apt_repository:
+    repo: "deb https://packages.cloud.google.com/apt cloud-sdk main"
+    state: present
+  become: true
+
+- name: Add Spotify repository key
+  ansible.builtin.apt_key:
+    url: "https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg"
+    state: present
+  become: true
+
+- name: Add Spotify repository
+  ansible.builtin.apt_repository:
+    repo: "deb http://repository.spotify.com stable non-free"
+    state: present
+  become: true
+
+- name: Add Hashicorp repository key
+  ansible.builtin.apt_key:
+    url: "https://apt.releases.hashicorp.com/gpg"
+    state: present
+  become: true
+
+- name: Add Hashicorp repository
+  ansible.builtin.apt_repository:
+    repo: "deb https://apt.releases.hashicorp.com {{ upstream_debian_codename }} main"
+    state: present
+  become: true
+
+- name: Ensure apt Neovim is not installed
+  become: true
+  ansible.builtin.apt:
+    name: neovim
+    state: absent
+  tags: packages
+
+- name: Install Neovim latest stable release
+  become: true
+  ansible.builtin.get_url:
+    url: https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+    dest: /usr/local/bin/nvim
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0755"
+  tags: packages
+
+- name: "Create FiraCode font directory for {{ user }}"
+  become: true
+  ansible.builtin.file:
+    path: "/home/{{ user }}/.fonts/FiraCode"
+    state: directory
+    mode: "0755"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  tags: packages
+
+- name: Query Github API for the latest Nerd Fonts release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest
+    return_content: true
+  register: nerdfonts_release
+  tags: packages
+
+- name: Install FiraCode latest release
+  become: true
+  ansible.builtin.unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nerdfonts_release.json.tag_name }}/FiraCode.tar.xz"
+    remote_src: true
+    dest: "/home/{{ user }}/.fonts/FiraCode/"
+    mode: "0600"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  tags: packages
+
+- name: Query Github API for the latest Starship release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/starship/starship/releases/latest
+    return_content: true
+  register: starship_release
+  tags: packages
+
+- name: Install Starship latest release
+  become: true
+  ansible.builtin.unarchive:
+    src: "https://github.com/starship/starship/releases/download/{{ starship_release.json.tag_name }}/starship-x86_64-unknown-linux-gnu.tar.gz"
+    remote_src: true
+    dest: /usr/local/bin/
+    mode: "0755"
+  tags: packages
+
+- name: Install tools of the trade
+  become: true
+  ansible.builtin.apt:
+    name: "{{ packages }}"
+    state: present
+    autoclean: true
+    force: true
+  tags: packages
