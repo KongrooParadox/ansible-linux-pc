@@ -3,8 +3,7 @@
   become: true
   ansible.builtin.apt:
     name: "*"
-    state: latest
-    only_upgrade: true
+    state: present
     update_cache: true
   tags: packages
 
@@ -59,6 +58,34 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0755"
+  tags: packages
+
+- name: "Create FiraCode font directory for {{ user }}"
+  become: true
+  ansible.builtin.file:
+    path: "/home/{{ user }}/.fonts/FiraCode"
+    state: directory
+    mode: "0755"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  tags: packages
+
+- name: Query Github API for the latest Nerd Fonts release
+  ansible.builtin.uri:
+    url: https://api.github.com/repos/ryanoasis/nerd-fonts/releases/latest
+    return_content: true
+  register: nerdfonts_release
+  tags: packages
+
+- name: Install FiraCode latest release
+  become: true
+  ansible.builtin.unarchive:
+    src: "https://github.com/ryanoasis/nerd-fonts/releases/download/{{ nerdfonts_release.json.tag_name }}/FiraCode.tar.xz"
+    remote_src: true
+    dest: "/home/{{ user }}/.fonts/FiraCode/"
+    mode: "0600"
+    owner: "{{ user }}"
+    group: "{{ user }}"
   tags: packages
 
 - name: Query Github API for the latest Starship release
