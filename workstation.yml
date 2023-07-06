@@ -10,3 +10,5 @@
   vars_files:
     - vars/git.yml
     - vars/os.yml
+
+# vim: set filetype=yaml.ansible
