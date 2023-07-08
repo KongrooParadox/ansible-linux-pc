@@ -31,6 +31,16 @@
     - { name: 'set.lua', dest_dir: 'nvim/lua/config' }
   tags: config
 
+- name: Add root editorconfig
+  become: true
+  ansible.builtin.copy:
+    src: .editorconfig
+    dest: /
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0644"
+  tags: config
+
 - name: Configure Starship
   become: true
   ansible.builtin.copy:
