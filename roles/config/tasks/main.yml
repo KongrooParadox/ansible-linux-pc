@@ -54,9 +54,42 @@
 - name: Configure Zellij
   become: true
   ansible.builtin.copy:
-    src: config.kdl
+    src: zellij/config.kdl
     dest: "/home/{{ user }}/.config/zellij/"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0644"
   tags: config
+
+- name: Copy statusbar to Zellij plugins folder
+  become: true
+  ansible.builtin.copy:
+    src: zellij/plugins/statusbar.wasm
+    dest: "/home/{{ user }}/.config/zellij/plugins/"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0750"
+  tags: config
+
+- name: Create Zellij layouts directory
+  become: true
+  ansible.builtin.file:
+    path: "/home/{{ user }}/.config/zellij/layouts"
+    state: directory
+    mode: "0755"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+  tags: config
+
+- name: Add Zellij layouts
+  become: true
+  ansible.builtin.template:
+    src: "{{ item }}.j2"
+    dest: "/home/{{ user }}/.config/zellij/layouts/{{ item }}"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0644"
+  tags: config
+  loop:
+    - editor.kdl
+    - terminal.kdl
