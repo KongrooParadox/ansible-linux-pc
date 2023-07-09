@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  name: Install linux workstation
+  name: Install & configure linux workstation
   remote_user: root
   roles:
     - packages

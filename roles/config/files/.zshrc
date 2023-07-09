@@ -36,3 +36,4 @@ compinit
 source <(kubectl completion zsh)
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+eval "$(zellij setup --generate-auto-start zsh)"

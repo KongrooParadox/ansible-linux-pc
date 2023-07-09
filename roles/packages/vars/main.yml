@@ -37,6 +37,7 @@ packages:
   - rkhunter
   - rsync
   - spotify-client
+  - subversion
   - sudo
   - tcpdump
   - terraform-ls

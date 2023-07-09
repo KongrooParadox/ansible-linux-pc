@@ -119,7 +119,37 @@
     mode: "0755"
   tags: packages
 
-- name: Install tools of the trade
+- name: Check if Cargo is installed
+  become: true
+  become_user: "{{ user }}"
+  ansible.builtin.command: which cargo
+  failed_when: false
+  register: cargo_installed
+  changed_when: false
+  tags: packages
+
+- name: Download cargo Install script
+  become: true
+  ansible.builtin.get_url:
+    url: https://sh.rustup.rs
+    dest: /tmp/sh.rustup.rs
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0755"
+  tags: packages
+  when: cargo_installed.rc in [1]
+
+- name: Install cargo
+  become: true
+  become_user: "{{ user }}"
+  ansible.builtin.command:
+    cmd: /tmp/sh.rustup.rs -y
+  args:
+    creates: "/home/{{ user }}/.cargo/bin/cargo"
+  tags: packages
+  when: cargo_installed.rc in [1]
+
+- name: Install apt tools
   become: true
   ansible.builtin.apt:
     name: "{{ packages }}"
