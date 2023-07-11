@@ -6,8 +6,10 @@ layout {
         }
     }
 
-    tab name="editor" focus=true {
-        pane borderless=true
+    tab name="editor" focus=true fullscreen=true {
+        pane borderless=true command="nvim" {
+            args "."
+        }
     }
     tab name="terminal" {
         pane
@@ -22,5 +24,6 @@ keybinds {
 
     shared_except "locked" {
         bind "Insert" { GoToTab 1; SwitchToMode "Locked"; }
+        bind "Alt d" { Detach; }
     }
 }

@@ -32,8 +32,19 @@ alias lll='ls --color=auto -lh | less'
 autoload -Uz compinit
 compinit
 
+#### Zellij ####
+ZELLIJ_AUTO_ATTACH=true
+ZELLIJ_RUNNER_ROOT_DIR=workspace
+ZELLIJ_RUNNER_MAX_DIRS_DEPTH=3
+
+export ZELLIJ_AUTO_ATTACH ZELLIJ_RUNNER_ROOT_DIR ZELLIJ_RUNNER_MAX_DIRS_DEPTH
 # kubectl
 source <(kubectl completion zsh)
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
-eval "$(zellij setup --generate-auto-start zsh)"
+if [[ -z "$ZELLIJ" ]]; then
+    zellij-runner
+    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
+        exit
+    fi
+fi

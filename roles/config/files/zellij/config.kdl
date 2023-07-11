@@ -193,7 +193,7 @@ themes {
 
 on_force_close "detach"
 simplified_ui false
-pane_frames true
+pane_frames false
 theme "default"
 default_layout "editor"
 default_mode "locked"

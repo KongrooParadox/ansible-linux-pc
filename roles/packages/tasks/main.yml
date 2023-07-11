@@ -149,6 +149,37 @@
   tags: packages
   when: cargo_installed.rc in [1]
 
+- name: Symbolic link to cargo for root user
+  ansible.builtin.file:
+    src: "/home/{{ user }}/.cargo/bin/{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
+    owner: root
+    group: root
+    state: link
+  loop:
+    - cargo
+    - cargo-clippy
+    - cargo-fmt
+    - cargo-miri
+    - clippy-driver
+    - rls
+    - rust-analyzer
+    - rustc
+    - rustdoc
+    - rustfmt
+    - rust-gdb
+    - rust-gdbgui
+    - rust-lldb
+    - rustup
+
+- name: Install Zellij Runner
+  become: true
+  become_user: "{{ user }}"
+  community.general.cargo:
+    name: zellij-runner
+    state: latest
+  tags: packages
+
 - name: Install apt tools
   become: true
   ansible.builtin.apt:

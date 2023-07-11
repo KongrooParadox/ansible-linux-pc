@@ -14,12 +14,12 @@ Tested only with Debian based [Kaisen Linux](https://kaisenlinux.org/)
 - [ ] vault
 - [ ] docker
 - [ ] terraform
-- [ ] zellij
+- [x] zellij
 - [x] spotify
 - [ ] vagrant
 - [ ] asdf
 - [x] starship
-- [] dns setup
+- [ ] dns setup
 - [ ] nodejs
 - [ ] Hugo
 - [ ] cloud CLI
@@ -30,5 +30,3 @@ Tested only with Debian based [Kaisen Linux](https://kaisenlinux.org/)
   - [x] gitconfig
   - [x] nvim
   - [x] starship
-
-# Pre-requisites
