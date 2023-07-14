@@ -21,14 +21,11 @@
 - name: Configure Neovim
   become: true
   ansible.builtin.copy:
-    src: "{{ item.name }}"
-    dest: "/home/{{ user }}/.config/{{ item.dest_dir }}/"
+    src: nvim
+    dest: "/home/{{ user }}/.config"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0644"
-  loop:
-    - { name: 'init.lua', dest_dir: 'nvim' }
-    - { name: 'set.lua', dest_dir: 'nvim/lua/config' }
   tags: config
 
 - name: Add root editorconfig
