@@ -1,42 +1,4 @@
 -- LSP settings.
--- This function gets run when an LSP connects to a particular buffer.
--- Thank you TJ Devries !
-local on_attach = function(_, bufnr)
-    local nmap_lsp = function(keys, func, desc)
-        if desc then
-            desc = 'LSP: ' .. desc
-        end
-
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
-    end
-
-    nmap_lsp('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    nmap_lsp('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-
-    nmap_lsp('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    nmap_lsp('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    nmap_lsp('gI', vim.lsp.buf.implementation, '[G]oto [I]mplementation')
-    nmap_lsp('<leader>D', vim.lsp.buf.type_definition, 'Type [D]efinition')
-    nmap_lsp('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    nmap_lsp('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
-
-    -- See `:help K` for why this keymap
-    nmap_lsp('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap_lsp('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-
-    -- Lesser used LSP functionality
-    nmap_lsp('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
-    nmap_lsp('<leader>wa', vim.lsp.buf.add_workspace_folder, '[W]orkspace [A]dd Folder')
-    nmap_lsp('<leader>wr', vim.lsp.buf.remove_workspace_folder, '[W]orkspace [R]emove Folder')
-    nmap_lsp('<leader>wl', function()
-        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-    end, '[W]orkspace [L]ist Folders')
-
-    -- Create a command `:Format` local to the LSP buffer
-    vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-        vim.lsp.buf.format()
-    end, { desc = 'Format current buffer with LSP' })
-end
 
 return {
     {
@@ -72,8 +34,7 @@ return {
             },
         },
         config = function()
-            local lsp = require("lsp-zero")
-            lsp.preset("recommended")
+            local lsp = require("lsp-zero").preset({})
             lsp.ensure_installed({
                 "ansiblels",
                 "bashls",
@@ -82,6 +43,9 @@ return {
                 "dockerls",
                 "terraformls",
                 "yamlls",
+                "rust_analyzer",
+                "tsserver",
+                "eslint",
                 "lua_ls"
             })
 
@@ -112,10 +76,6 @@ return {
                     },
                 },
             }
-            -- require("mason").setup()
-            -- require("mason-lspconfig").setup({
-            --     ensure_installed = vim.tbl_keys(servers),
-            -- })
             require("neodev").setup()
             lsp.nvim_workspace()
 
@@ -132,21 +92,42 @@ return {
                 mapping = cmp_mappings
             })
 
-            lsp.on_attach = on_attach
+            -- This function gets run when an LSP connects to a particular buffer.
+            lsp.on_attach(function(client, bufnr)
+                vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { buffer = bufnr, remap = false, desc = 'LSP: [R]e[n]ame' })
+                vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { buffer = bufnr, remap = false, desc = 'LSP: [C]ode [A]ction' })
+                vim.keymap.set('n', '<leader>df', vim.diagnostic.open_float, { buffer = bufnr, remap = false, desc = 'LSP: Diagnostics [O]pen [F]loat' })
+                vim.keymap.set('n', '[d', vim.diagnostic.goto_next, { buffer = bufnr, remap = false, desc = 'LSP: Diagnostics Next' })
+                vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, { buffer = bufnr, remap = false, desc = 'LSP: Diagnostics Previous' })
+
+                vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { buffer = bufnr, remap = false, desc ='LSP: [G]oto [D]efinition' })
+                vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, { buffer = bufnr, remap = false, desc ='LSP: [G]oto [R]eferences' })
+                vim.keymap.set('n', 'gI', vim.lsp.buf.implementation, { buffer = bufnr, remap = false, desc = 'LSP: [G]oto [I]mplementation' })
+                vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, { buffer = bufnr, remap = false, desc = 'LSP: Type [D]efinition' })
+                vim.keymap.set('n', '<leader>ds', require('telescope.builtin').lsp_document_symbols, { buffer = bufnr, remap = false, desc = 'LSP: [D]ocument [S]ymbols' })
+                vim.keymap.set('n', '<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, { buffer = bufnr, remap = false, desc = 'LSP: [W]orkspace [S]ymbols' })
+                vim.keymap.set("n", "<leader>f", function()
+                    vim.lsp.buf.format()
+                end, { buffer = bufnr, remap = false, desc = 'LSP: [F]ormat Current Buffer' })
+
+                vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = 'LSP: Hover Documentation' })
+                vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, desc = 'LSP: Signature Documentation' })
+
+                -- Lesser used LSP functionality
+                vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, remap = false, desc = 'LSP: [G]oto [D]eclaration' })
+                vim.keymap.set('n', '<leader>wa', vim.lsp.buf.add_workspace_folder, { buffer = bufnr, remap = false, desc = 'LSP: [W]orkspace [A]dd Folder' })
+                vim.keymap.set('n', '<leader>wr', vim.lsp.buf.remove_workspace_folder, { buffer = bufnr, remap = false, desc = 'LSP: [W]orkspace [R]emove Folder' })
+                vim.keymap.set('n', '<leader>wl', function()
+                    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+                end, { buffer = bufnr, remap = false, desc = 'LSP: [W]orkspace [L]ist Folders' })
+            end)
+
+            require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+
             lsp.setup()
-            vim.diagnostic.config({
-                virtual_text = true
-            })
-            -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
-            -- require('mason-lspconfig').setup_handlers {
-            --     function(server_name)
-            --         require('lspconfig')[server_name].setup {
-            --             capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities),
-            --             on_attach = on_attach,
-            --             settings = servers[server_name],
-            --         }
-            --     end,
-            -- }
+            -- vim.diagnostic.config({
+            --     virtual_text = true
+            -- })
         end
     },
     -- Useful status updates for LSP

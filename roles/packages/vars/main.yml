@@ -9,6 +9,7 @@ packages:
   - curl
   - direnv
   - dnsutils
+  - fd-find
   - fping
   - fzf
   - gcc
