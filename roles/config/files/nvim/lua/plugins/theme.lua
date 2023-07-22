@@ -3,16 +3,15 @@ vim.o.termguicolors = true
 
 return {
     {
-        "folke/tokyonight.nvim",
+        "EdenEast/nightfox.nvim",
         lazy = false,
         priority = 1000,
         opts = {},
         config = function()
-            require("tokyonight").setup({
-                -- use the night style
-                style = "night",
+            require("nightfox").setup({
+                transparent = true,
             })
-            vim.cmd[[colorscheme tokyonight]]
+            vim.cmd("colorscheme nordfox")
         end
     },
     {
@@ -20,7 +19,7 @@ return {
         config = function()
             require('lualine').setup {
                 options = {
-                    theme = 'tokyonight',
+                    theme = 'nordfox',
                 },
             }
         end,
