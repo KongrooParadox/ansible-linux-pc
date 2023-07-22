@@ -111,7 +111,7 @@ return {
                 end, { buffer = bufnr, remap = false, desc = 'LSP: [F]ormat Current Buffer' })
 
                 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { buffer = bufnr, remap = false, desc = 'LSP: Hover Documentation' })
-                vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, desc = 'LSP: Signature Documentation' })
+                vim.keymap.set('n', '<leader>K', vim.lsp.buf.signature_help, { buffer = bufnr, remap = false, desc = 'LSP: Signature Documentation' })
 
                 -- Lesser used LSP functionality
                 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { buffer = bufnr, remap = false, desc = 'LSP: [G]oto [D]eclaration' })
