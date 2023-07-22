@@ -125,17 +125,6 @@ return {
             require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
             lsp.setup()
-            -- vim.diagnostic.config({
-            --     virtual_text = true
-            -- })
-        end
-    },
-    -- Useful status updates for LSP
-    {
-        'j-hui/fidget.nvim',
-        tag = 'legacy',
-        config = function()
-            require("fidget").setup()
         end
     },
     {
