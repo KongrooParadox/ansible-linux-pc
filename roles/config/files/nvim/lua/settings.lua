@@ -1,6 +1,6 @@
 vim.opt.list = true
 vim.opt.showbreak = "↪"
-vim.opt.listchars = { tab="→ ", eol="↲", nbsp="␣", trail="~", extends="⟩", precedes="⟨", space="•"}
+vim.opt.listchars = { tab=" ▸", eol="↲", nbsp="␣", trail="~", extends="⟩", precedes="⟨", space="•"}
 
 -- Set highlight on search
 vim.o.hlsearch = false
