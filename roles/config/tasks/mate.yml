@@ -1,0 +1,86 @@
+---
+- name: Set dconf settings
+  become: true
+  become_user: "{{ user }}"
+  community.general.dconf:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    state: present
+  loop:
+    - key: '/org/mate/marco/global-keybindings/run-command-terminal'
+      value: "'<Primary><Shift><Alt>t'"
+    - key: '/org/mate/terminal/profiles/default/default-show-menubar'
+      value: "false"
+    - key: '/org/mate/terminal/profiles/default/allow-bold'
+      value: "true"
+    - key: '/org/mate/terminal/keybindings/zoom-normal'
+      value: "'<Primary>0'"
+    - key: '/org/mate/terminal/keybindings/copy'
+      value: "'<Primary><Shift>c'"
+    - key: '/org/mate/terminal/keybindings/close-tab'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/close-window'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/help'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/move-tab-left'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/move-tab-right'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/new-profile'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/new-tab'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/new-window'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/next-profile'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/next-tab'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/prev-profile'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/prev-tab'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/search-find'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/search-find-next'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/search-find-previous'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/select-all'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-1'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-2'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-3'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-4'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-5'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-6'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-7'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-8'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-9'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-10'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-11'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/switch-to-tab-12'
+      value: "'disabled'"
+    - key: '/org/mate/terminal/keybindings/paste'
+      value: "'<Primary><Shift>v'"
+    - key: '/org/mate/desktop/keybindings/custom0/action'
+      value: "'mate-terminal --geometry=100x20+3530+5 --full-screen'"
+    - key: '/org/mate/desktop/keybindings/custom0/binding'
+      value: "'<Primary><Alt>t'"
+    - key: '/org/mate/desktop/keybindings/custom0/name'
+      value: "'Run a fullscreen terminal'"
+    - key: '/org/mate/desktop/peripherals/keyboard/kbd/options'
+      value: '["caps\tcaps:escape"]'
+  tags: config

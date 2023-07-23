@@ -90,3 +90,7 @@
   loop:
     - editor.kdl
     - terminal.kdl
+
+- name: Configure Mate settings
+  ansible.builtin.include_tasks: mate.yml
+  tags: config
