@@ -36,6 +36,7 @@ Tested only with Debian based [Kaisen Linux](https://kaisenlinux.org/)
   - [ ] gcp
   - [ ] scaleway
 - [x] dotfiles
+  - [ ] ssh keygen (broken)
   - [x] gitconfig
   - [x] nvim
   - [x] starship
