@@ -8,9 +8,8 @@ Tested only with Debian based [Kaisen Linux](https://kaisenlinux.org/)
 
 - [ ] Mate Settings
   - [x] Import keyboard shortcuts
-  - [ ] Import keyboard layout
+  - [x] Import keyboard layout
   - [x] Import terminal settings
-  - [ ] Import panel layout & settings
 - [ ] firefox
 - [ ] nvim
   - [x] Base setup

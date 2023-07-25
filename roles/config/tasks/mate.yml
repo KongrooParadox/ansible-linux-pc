@@ -83,4 +83,7 @@
       value: "'Run a fullscreen terminal'"
     - key: '/org/mate/desktop/peripherals/keyboard/kbd/options'
       value: '["caps\tcaps:escape"]'
+    - key: '/org/mate/desktop/peripherals/keyboard/kbd/layouts'
+      value: '["us\talt-intl", "us"]'
+
   tags: config
