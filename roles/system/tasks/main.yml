@@ -28,7 +28,8 @@
 - name: Generate SSH key
   become: true
   community.crypto.openssh_keypair:
-    path: "/home/{{ user }}/.ssh/id_{{ user }}_{{ ansible_hostname }}"
+    path: "/home/{{ user }}/.ssh/id_ed25519"
+    comment: "{{ user }}@{{ ansible_hostname }}"
     type: ed25519
     mode: "0400"
     owner: "{{ user }}"
