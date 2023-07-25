@@ -30,4 +30,5 @@ return {
             vim.keymap.set("n", "<C-;>", function() ui.nav_file(5) end, { desc = 'Go to 5th file in harpoon list'})
         end
     },
+    'ThePrimeagen/vim-be-good',
 }
