@@ -53,7 +53,7 @@ autocmd("BufWinEnter", {
         end, {buffer = bufnr, remap = false, desc = 'Git [C]ommit'})
 
         vim.keymap.set("n", "<leader>P", function()
-            vim.cmd.Git({'pull', '--rebase'})
+            vim.cmd.Git('pull --rebase')
         end, {buffer = bufnr, remap = false, desc = 'Git [P]ull with rebase'})
 
         vim.keymap.set("n", "<leader>t", function()

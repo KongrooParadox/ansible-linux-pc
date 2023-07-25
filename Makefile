@@ -5,6 +5,9 @@ init:
 	apt install -y python3-pip
 	ansible-galaxy install -r requirements.yml
 
+system:
+	ansible-playbook workstation.yml --tags system
+
 packages:
 	ansible-playbook workstation.yml --tags packages
 

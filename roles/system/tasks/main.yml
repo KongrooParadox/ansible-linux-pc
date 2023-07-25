@@ -6,6 +6,7 @@
     comment: "{{ user }}"
     groups: "{{ user }},cdrom,floppy,audio,dip,video,plugdev,users,netdev,docker,bluetooth,lpadmin,scanner,vboxusers,libvirt,gns3,sudo"
     shell: /bin/zsh
+  tags: system
 
 - name: "Create sudo rules for user {{ user }}"
   become: true
@@ -15,6 +16,7 @@
     regexp: '^{{ user }}'
     line: '{{ user }} ALL=(ALL) NOPASSWD: ALL'
     validate: 'visudo -cf %s'
+  tags: system
 
 - name: "Create .ssh directory for {{ user }}"
   become: true
@@ -24,6 +26,7 @@
     mode: "0755"
     owner: "{{ user }}"
     group: "{{ user }}"
+  tags: system
 
 - name: Generate SSH key
   become: true
@@ -34,3 +37,4 @@
     mode: "0400"
     owner: "{{ user }}"
     group: "{{ user }}"
+  tags: system
