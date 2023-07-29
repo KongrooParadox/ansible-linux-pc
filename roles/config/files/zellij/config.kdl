@@ -69,8 +69,8 @@ keybinds {
         bind "Alt c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
-        bind "Alt f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Alt b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "Ctrl d" "PageDown" { PageScrollDown; }
+        bind "Ctrl u" "PageUp" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
     }
@@ -79,12 +79,12 @@ keybinds {
         bind "Alt c" { ScrollToBottom; SwitchToMode "Normal"; }
         bind "j" "Down" { ScrollDown; }
         bind "k" "Up" { ScrollUp; }
-        bind "Alt f" "PageDown" "Right" "l" { PageScrollDown; }
-        bind "Alt b" "PageUp" "Left" "h" { PageScrollUp; }
+        bind "Ctrl d" "PageDown" { PageScrollDown; }
+        bind "Ctrl u" "PageUp" { PageScrollUp; }
         bind "d" { HalfPageScrollDown; }
         bind "u" { HalfPageScrollUp; }
         bind "n" { Search "down"; }
-        bind "p" { Search "up"; }
+        bind "N" { Search "up"; }
         bind "c" { SearchToggleOption "CaseSensitivity"; }
         bind "w" { SearchToggleOption "Wrap"; }
         bind "o" { SearchToggleOption "WholeWord"; }
@@ -165,6 +165,9 @@ keybinds {
     }
     shared_except "tmux" "locked" {
         bind "Alt b" { SwitchToMode "Tmux"; }
+    }
+    shared {
+        bind "Home" { Detach; }
     }
 }
 

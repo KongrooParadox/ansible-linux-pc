@@ -69,5 +69,6 @@ return {
                 { desc = 'Toggle [U]ndotree'}
             )
         end,
-    }
+    },
+    'xiyaowong/virtcolumn.nvim',
 }

@@ -27,16 +27,15 @@ vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
--- Decrease update time
 vim.opt.updatetime = 50
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = 'yes'
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
 
 -- Set completeopt to have a better completion experience
 vim.opt.completeopt = 'menuone,noselect'
 
--- [[ Highlight on yank ]]
+-- Highlight on yank
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
   callback = function()
