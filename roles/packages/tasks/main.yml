@@ -180,6 +180,15 @@
     state: latest
   tags: packages
 
+- name: Remove unused apps
+  become: true
+  ansible.builtin.apt:
+    name: "{{ item }}"
+    state: absent
+  tags: packages
+  loop:
+    - terminator
+
 - name: Install apt tools
   become: true
   ansible.builtin.apt:

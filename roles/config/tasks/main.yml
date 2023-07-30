@@ -94,3 +94,12 @@
 - name: Configure Mate settings
   ansible.builtin.include_tasks: mate.yml
   tags: config
+
+- name: Configure i3
+  ansible.builtin.copy:
+    src: i3config
+    dest: "/home/{{ user }}/.config/i3/config"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0644"
+  tags: config

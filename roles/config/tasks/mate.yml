@@ -85,5 +85,15 @@
       value: '["caps\tcaps:escape"]'
     - key: '/org/mate/desktop/peripherals/keyboard/kbd/layouts'
       value: '["us\talt-intl", "us"]'
+    - key: '/org/mate/desktop/session/required-components/windowmanager'
+      value: "'i3'"
+    - key: '/org/mate/desktop/session/required-components-list'
+      value: "['windowmanager', 'panel']"
+    - key: '/org/mate/panel/general/object-id-list'
+      value: "['menu-bar', 'object-1', 'object-9']"
+    - key: '/org/mate/panel/general/toplevel-id-list'
+      value: "['top']"
+    - key: '/org/mate/desktop/session/required-components/panel'
+      value: "'mate-panel'"
 
   tags: config

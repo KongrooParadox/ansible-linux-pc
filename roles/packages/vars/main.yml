@@ -18,6 +18,7 @@ packages:
   - google-cloud-sdk
   - gpg
   - htop
+  - i3
   - ipcalc
   - iptables
   - iptables-persistent
