@@ -189,6 +189,15 @@
   loop:
     - terminator
 
+- name: Disable Kaisen Conky
+  become: true
+  ansible.builtin.lineinfile:
+    name: /etc/xdg/autostart/kaisen-conky.desktop
+    regexp: '^Hidden=.*'
+    line: Hidden=true
+    state: present
+  tags: packages
+
 - name: Install apt tools
   become: true
   ansible.builtin.apt:

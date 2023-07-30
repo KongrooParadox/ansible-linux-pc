@@ -1,4 +1,60 @@
 ---
+- name: Create dconf locks dir
+  become: true
+  ansible.builtin.file:
+    path: /etc/dconf/db/kaisen.d/locks
+    state: directory
+    owner: root
+    group: root
+    mode: "0755"
+  tags: config
+
+- name: Lock certain dconf setting (to persist on reboot)
+  become: true
+  ansible.builtin.copy:
+    src: 00_panel_settings
+    dest: /etc/dconf/db/kaisen.d/locks/00_panel_settings
+    owner: root
+    group: root
+    mode: "0644"
+  tags: config
+
+- name: Lock certain dconf setting (to persist on reboot)
+  become: true
+  ansible.builtin.copy:
+    src: 00_panel_settings
+    dest: /etc/dconf/db/kaisen.d/locks/00_panel_settings
+    owner: root
+    group: root
+    mode: "0644"
+  tags: config
+
+- name: Overwrite default Kaisen Profile
+  become: true
+  ansible.builtin.copy:
+    src: dconf-mate
+    dest: /etc/dconf/db/kaisen.d/kaisen-default-profile
+    owner: root
+    group: root
+    mode: "0644"
+  tags: config
+
+- name: Remove uneeded mate panel items
+  become: true
+  become_user: "{{ user }}"
+  community.general.dconf:
+    key: "{{ item.key }}"
+    state: absent
+  loop:
+    - key: '/org/mate/panel/toplevels/top'
+    - key: '/org/mate/panel/toplevels/bottom'
+    - key: '/org/mate/panel/objects/main-menu'
+    - key: '/org/mate/panel/objects/show-desktop'
+    - key: '/org/mate/panel/objects/window-list'
+    - key: '/org/mate/panel/objects/clock-applet'
+    - key: '/org/mate/panel/objects/main-menu'
+  tags: config
+
 - name: Set dconf settings
   become: true
   become_user: "{{ user }}"
@@ -7,8 +63,6 @@
     value: "{{ item.value }}"
     state: present
   loop:
-    - key: '/org/mate/marco/global-keybindings/run-command-terminal'
-      value: "'<Primary><Shift><Alt>t'"
     - key: '/org/mate/terminal/profiles/default/default-show-menubar'
       value: "false"
     - key: '/org/mate/terminal/profiles/default/allow-bold'
@@ -75,12 +129,6 @@
       value: "'disabled'"
     - key: '/org/mate/terminal/keybindings/paste'
       value: "'<Primary><Shift>v'"
-    - key: '/org/mate/desktop/keybindings/custom0/action'
-      value: "'mate-terminal --geometry=100x20+3530+5 --full-screen'"
-    - key: '/org/mate/desktop/keybindings/custom0/binding'
-      value: "'<Primary><Alt>t'"
-    - key: '/org/mate/desktop/keybindings/custom0/name'
-      value: "'Run a fullscreen terminal'"
     - key: '/org/mate/desktop/peripherals/keyboard/kbd/options'
       value: '["caps\tcaps:escape"]'
     - key: '/org/mate/desktop/peripherals/keyboard/kbd/layouts'
@@ -90,10 +138,9 @@
     - key: '/org/mate/desktop/session/required-components-list'
       value: "['windowmanager', 'panel']"
     - key: '/org/mate/panel/general/object-id-list'
-      value: "['menu-bar', 'object-1', 'object-9']"
+      value: "['object-1', 'object-9']"
     - key: '/org/mate/panel/general/toplevel-id-list'
-      value: "['top']"
+      value: "['']"
     - key: '/org/mate/desktop/session/required-components/panel'
       value: "'mate-panel'"
-
   tags: config
