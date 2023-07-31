@@ -1,44 +1,4 @@
 ---
-- name: Create dconf locks dir
-  become: true
-  ansible.builtin.file:
-    path: /etc/dconf/db/kaisen.d/locks
-    state: directory
-    owner: root
-    group: root
-    mode: "0755"
-  tags: config
-
-- name: Lock certain dconf setting (to persist on reboot)
-  become: true
-  ansible.builtin.copy:
-    src: 00_panel_settings
-    dest: /etc/dconf/db/kaisen.d/locks/00_panel_settings
-    owner: root
-    group: root
-    mode: "0644"
-  tags: config
-
-- name: Lock certain dconf setting (to persist on reboot)
-  become: true
-  ansible.builtin.copy:
-    src: 00_panel_settings
-    dest: /etc/dconf/db/kaisen.d/locks/00_panel_settings
-    owner: root
-    group: root
-    mode: "0644"
-  tags: config
-
-- name: Overwrite default Kaisen Profile
-  become: true
-  ansible.builtin.copy:
-    src: dconf-mate
-    dest: /etc/dconf/db/kaisen.d/kaisen-default-profile
-    owner: root
-    group: root
-    mode: "0644"
-  tags: config
-
 - name: Remove uneeded mate panel items
   become: true
   become_user: "{{ user }}"
@@ -140,7 +100,63 @@
     - key: '/org/mate/panel/general/object-id-list'
       value: "['object-1', 'object-9']"
     - key: '/org/mate/panel/general/toplevel-id-list'
-      value: "['']"
+      value: "['top']"
     - key: '/org/mate/desktop/session/required-components/panel'
       value: "'mate-panel'"
+    - key: '/org/mate/panel/toplevels/top/auto-hide'
+      value: "true"
+    - key: '/org/mate/panel/toplevels/top/enable-buttons'
+      value: "false"
+    - key: '/org/mate/panel/toplevels/top/auto-hide'
+      value: "true"
+    - key: '/org/mate/panel/toplevels/top/expand'
+      value: "true"
+    - key: '/org/mate/panel/toplevels/top/orientation'
+      value: "'top'"
+    - key: '/org/mate/panel/toplevels/top/screen'
+      value: "0"
+    - key: '/org/mate/panel/toplevels/top/size'
+      value: "19"
+    - key: '/org/mate/panel/toplevels/top/x-centered'
+      value: "true"
+    - key: '/org/mate/desktop/background/color-shading-type'
+      value: "'vertical-gradient'"
+    - key: '/org/mate/desktop/background/picture-filename'
+      value: "'/usr/share/backgrounds/mate/desktop/Ubuntu-Mate-Warm-no-logo.png'"
+    - key: '/org/mate/desktop/background/picture-options'
+      value: "'zoom'"
+    - key: '/org/mate/desktop/background/primary-color'
+      value: "'rgb(88,145,188)'"
+    - key: '/org/mate/desktop/background/secondary-color'
+      value: "'rgb(60,143,37)'"
+    - key: '/org/mate/desktop/interface/gtk-theme'
+      value: "'BlackMATE'"
+    - key: '/org/mate/desktop/interface/icon-theme'
+      value: "'mate'"
+    - key: '/org/mate/terminal/profiles/default/background-type'
+      value: "'transparent'"
+    - key: '/org/mate/terminal/profiles/default/background-color'
+      value: "'#000000000000'"
+    - key: '/org/mate/terminal/profiles/default/background-darkness'
+      value: "'0.69349315068493156'"
+    - key: '/org/mate/terminal/profiles/default/allow-bold'
+      value: "true"
+    - key: '/org/mate/terminal/profiles/default/bold-color'
+      value: "'#000000000000'"
+    - key: '/org/mate/terminal/profiles/default/bold-color-same-as-fg'
+      value: "false"
+    - key: '/org/mate/terminal/profiles/default/cursor-shape'
+      value: "'block'"
+    - key: '/org/mate/terminal/profiles/default/default-show-menubar'
+      value: "false"
+    - key: '/org/mate/terminal/profiles/default/foreground-color'
+      value: "'#3FFFAA04BFFF'"
+    - key: '/org/mate/terminal/profiles/default/palette'
+      value: "'#000000000000:#CDCD00000000:#0000CDCD0000:#CDCDCDCD0000:#1E1D9090FFFF:#CDCD0000CDCD:#0000CDCDCDCD:#E5E4E5E4E5E4:#4C4B4C4B4C4B:#FFFF00000000:#0000FFFF0000:#FFFFFFFF0000:#46468282B4B3:#FFFF0000FFFF:#0000FFFFFFFF:#FFFFFFFFFFFF'"
+    - key: '/org/mate/terminal/profiles/default/scrollback-unlimited'
+      value: "true"
+    - key: '/org/mate/terminal/profiles/default/silent-bell'
+      value: "true"
+    - key: '/org/mate/terminal/profiles/default/use-theme-colors'
+      value: "false"
   tags: config
