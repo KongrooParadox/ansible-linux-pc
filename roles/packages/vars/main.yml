@@ -49,6 +49,7 @@ packages:
   - vagrant
   - virtualenv
   - vlc
+  - xclip
   - youtube-dl
   - zplug
   - zsh
