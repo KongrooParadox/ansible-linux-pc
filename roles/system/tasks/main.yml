@@ -4,7 +4,7 @@
   ansible.builtin.user:
     name: "{{ user }}"
     comment: "{{ user }}"
-    groups: "{{ user }},cdrom,floppy,audio,dip,video,plugdev,users,netdev,docker,bluetooth,lpadmin,scanner,vboxusers,libvirt,gns3,sudo"
+    groups: "{{ user }},cdrom,floppy,audio,dip,video,plugdev,users,netdev,bluetooth,lpadmin,scanner,sudo"
     shell: /bin/zsh
   tags: system
 

@@ -68,15 +68,18 @@
     mode: "0750"
   tags: config
 
-- name: Create Zellij layouts directory
+- name: Create config directories
   become: true
   ansible.builtin.file:
-    path: "/home/{{ user }}/.config/zellij/layouts"
+    path: "/home/{{ user }}/.config/{{ item }}"
     state: directory
     mode: "0755"
     owner: "{{ user }}"
     group: "{{ user }}"
   tags: config
+  loop:
+    - zellij/layouts
+    - i3
 
 - name: Add Zellij layouts
   become: true

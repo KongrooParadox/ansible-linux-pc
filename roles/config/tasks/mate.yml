@@ -130,9 +130,9 @@
     - key: '/org/mate/terminal/keybindings/paste'
       value: "'<Primary><Shift>v'"
     - key: '/org/mate/desktop/peripherals/keyboard/kbd/options'
-      value: '["caps\tcaps:escape"]'
+      value: '["caps\\tcaps:escape"]'
     - key: '/org/mate/desktop/peripherals/keyboard/kbd/layouts'
-      value: '["us\talt-intl", "us"]'
+      value: '["us\\talt-intl", "us"]'
     - key: '/org/mate/desktop/session/required-components/windowmanager'
       value: "'i3'"
     - key: '/org/mate/desktop/session/required-components-list'

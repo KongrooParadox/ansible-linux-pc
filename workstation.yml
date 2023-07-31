@@ -1,7 +1,8 @@
 ---
 - hosts: localhost
   name: Install & configure linux workstation
-  remote_user: root
+  become: true
+  become_user: root
   roles:
     - packages
     - config
