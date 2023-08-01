@@ -80,6 +80,7 @@
   loop:
     - zellij/layouts
     - i3
+    - i3status
     - alacritty
 
 - name: Add Zellij layouts
@@ -103,6 +104,15 @@
   ansible.builtin.copy:
     src: i3config
     dest: "/home/{{ user }}/.config/i3/config"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0644"
+  tags: config
+
+- name: Configure i3 status bar
+  ansible.builtin.copy:
+    src: i3status
+    dest: "/home/{{ user }}/.config/i3status/config"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0644"
