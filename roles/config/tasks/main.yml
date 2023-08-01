@@ -80,6 +80,7 @@
   loop:
     - zellij/layouts
     - i3
+    - alacritty
 
 - name: Add Zellij layouts
   become: true
@@ -105,4 +106,20 @@
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0644"
+  tags: config
+
+- name: Configure Alacritty
+  ansible.builtin.copy:
+    src: alacritty.yml
+    dest: "/home/{{ user }}/.config/alacritty/alacritty.yml"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0644"
+  tags: config
+
+- name: Checkout Alacritty Themes
+  ansible.builtin.git:
+    repo: https://github.com/alacritty/alacritty-theme
+    dest: "/home/{{ user }}/.config/alacritty/themes"
+    version: master
   tags: config

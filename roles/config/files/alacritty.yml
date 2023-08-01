@@ -1,0 +1,22 @@
+env:
+  TERM: alacritty
+
+import:
+  - ~/.config/alacritty/themes/themes/github_dark_colorblind.yml
+window:
+  opacity: 0.5
+
+font:
+  normal:
+    family: "FiraCodeNerdFont"
+    style: "Regular"
+  bold:
+    family: "FiraCodeNerdFont"
+    style: "Bold"
+  italic:
+    family: "FiraCodeNerdFont"
+    style: "Italic"
+  bold_italic:
+    family: "FiraCodeNerdFont"
+    style: "Bold Italic"
+  size: 12.0

@@ -9,7 +9,6 @@
     - key: '/org/mate/panel/toplevels/top'
     - key: '/org/mate/panel/toplevels/bottom'
     - key: '/org/mate/panel/objects/main-menu'
-    - key: '/org/mate/panel/objects/show-desktop'
     - key: '/org/mate/panel/objects/window-list'
     - key: '/org/mate/panel/objects/clock-applet'
     - key: '/org/mate/panel/objects/main-menu'
@@ -23,70 +22,10 @@
     value: "{{ item.value }}"
     state: present
   loop:
-    - key: '/org/mate/terminal/profiles/default/default-show-menubar'
-      value: "false"
-    - key: '/org/mate/terminal/profiles/default/allow-bold'
-      value: "true"
     - key: '/org/mate/terminal/keybindings/zoom-normal'
       value: "'<Primary>0'"
     - key: '/org/mate/terminal/keybindings/copy'
       value: "'<Primary><Shift>c'"
-    - key: '/org/mate/terminal/keybindings/close-tab'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/close-window'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/help'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/move-tab-left'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/move-tab-right'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/new-profile'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/new-tab'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/new-window'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/next-profile'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/next-tab'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/prev-profile'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/prev-tab'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/search-find'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/search-find-next'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/search-find-previous'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/select-all'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-1'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-2'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-3'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-4'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-5'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-6'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-7'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-8'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-9'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-10'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-11'
-      value: "'disabled'"
-    - key: '/org/mate/terminal/keybindings/switch-to-tab-12'
-      value: "'disabled'"
     - key: '/org/mate/terminal/keybindings/paste'
       value: "'<Primary><Shift>v'"
     - key: '/org/mate/desktop/peripherals/keyboard/kbd/options'
@@ -125,36 +64,8 @@
       value: "'/usr/share/backgrounds/mate/desktop/Ubuntu-Mate-Warm-no-logo.png'"
     - key: '/org/mate/desktop/background/picture-options'
       value: "'zoom'"
-    - key: '/org/mate/desktop/background/primary-color'
-      value: "'rgb(88,145,188)'"
-    - key: '/org/mate/desktop/background/secondary-color'
-      value: "'rgb(60,143,37)'"
     - key: '/org/mate/desktop/interface/gtk-theme'
       value: "'BlackMATE'"
     - key: '/org/mate/desktop/interface/icon-theme'
       value: "'mate'"
-    - key: '/org/mate/terminal/profiles/default/background-type'
-      value: "'transparent'"
-    - key: '/org/mate/terminal/profiles/default/background-color'
-      value: "'#696969'"
-    - key: '/org/mate/terminal/profiles/default/background-darkness'
-      value: "'0.69349315068493156'"
-    - key: '/org/mate/terminal/profiles/default/allow-bold'
-      value: "true"
-    - key: '/org/mate/terminal/profiles/default/bold-color'
-      value: "'#000000000000'"
-    - key: '/org/mate/terminal/profiles/default/bold-color-same-as-fg'
-      value: "false"
-    - key: '/org/mate/terminal/profiles/default/cursor-shape'
-      value: "'block'"
-    - key: '/org/mate/terminal/profiles/default/default-show-menubar'
-      value: "false"
-    - key: '/org/mate/terminal/profiles/default/foreground-color'
-      value: "'#3FFFAA04BFFF'"
-    - key: '/org/mate/terminal/profiles/default/scrollback-unlimited'
-      value: "true"
-    - key: '/org/mate/terminal/profiles/default/silent-bell'
-      value: "true"
-    - key: '/org/mate/terminal/profiles/default/use-theme-colors'
-      value: "false"
   tags: config
