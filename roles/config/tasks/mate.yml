@@ -136,7 +136,7 @@
     - key: '/org/mate/terminal/profiles/default/background-type'
       value: "'transparent'"
     - key: '/org/mate/terminal/profiles/default/background-color'
-      value: "'#000000000000'"
+      value: "'#696969'"
     - key: '/org/mate/terminal/profiles/default/background-darkness'
       value: "'0.69349315068493156'"
     - key: '/org/mate/terminal/profiles/default/allow-bold'
@@ -151,8 +151,6 @@
       value: "false"
     - key: '/org/mate/terminal/profiles/default/foreground-color'
       value: "'#3FFFAA04BFFF'"
-    - key: '/org/mate/terminal/profiles/default/palette'
-      value: "'#000000000000:#CDCD00000000:#0000CDCD0000:#CDCDCDCD0000:#1E1D9090FFFF:#CDCD0000CDCD:#0000CDCDCDCD:#E5E4E5E4E5E4:#4C4B4C4B4C4B:#FFFF00000000:#0000FFFF0000:#FFFFFFFF0000:#46468282B4B3:#FFFF0000FFFF:#0000FFFFFFFF:#FFFFFFFFFFFF'"
     - key: '/org/mate/terminal/profiles/default/scrollback-unlimited'
       value: "true"
     - key: '/org/mate/terminal/profiles/default/silent-bell'

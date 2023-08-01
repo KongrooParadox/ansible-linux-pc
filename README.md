@@ -38,6 +38,8 @@ To play all stages run `make all`
 
 You can run only a specifig tag by running `make ${TAG_NAME}`
 
+Available tags :
+
 * `packages` : Install or upgrade software and tools
 * `config` : Only user specific configuration steps and dotfiles update
 * `system` : System specific configuration (user creation, sudoers changes, etc.)
@@ -54,7 +56,7 @@ To install [displaylink drivers for debian](https://github.com/AdnanHodzic/displ
 
 # TODO
 
-- [ ] Mate Settings
+- [x] Mate Settings
   - [x] Import keyboard shortcuts
   - [x] Import keyboard layout
   - [x] Import terminal settings
