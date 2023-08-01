@@ -1,8 +1,8 @@
 # Linux Workstation
 
-My config and tools for linux.
+My config and tools for linux
 
-Tested only with Debian based [Kaisen Linux](https://kaisenlinux.org/)
+Designed and tested for Debian Bookworm
 
 # Requirements
 
@@ -26,9 +26,31 @@ direnv allow .
 
 # Usage
 
-For initial installation run `sudo make init`
+## Install
+
+For initial installation run `make init`
 
 > :info: This will install system requirements and `ansible`
+
+## Run
+
+To play all stages run `make all`
+
+You can run only a specifig tag by running `make ${TAG_NAME}`
+
+* `packages` : Install or upgrade software and tools
+* `config` : Only user specific configuration steps and dotfiles update
+* `system` : System specific configuration (user creation, sudoers changes, etc.)
+
+# Post setup manual step
+
+To install [displaylink drivers for debian](https://github.com/AdnanHodzic/displaylink-debian) run :
+
+```shell
+./displaylink.sh
+```
+
+> Thanks to [Adnan Hodzic](https://github.com/AdnanHodzic) for the driver ;)
 
 # TODO
 
@@ -41,12 +63,12 @@ For initial installation run `sudo make init`
   - [x] Base setup
   - [x] Migrate to lazy
   - [ ] remaps (git fugitive, zellij-runner, etc)
-  - [ ] Find appropriate theme
+  - [x] Find appropriate theme
 - [ ] kvm (to test)
 - [x] k8s tools
 - [ ] packer
 - [ ] vault
-- [ ] docker
+- [x] podman
 - [ ] terraform
 - [x] zellij
 - [x] spotify
@@ -61,7 +83,7 @@ For initial installation run `sudo make init`
   - [ ] gcp
   - [ ] scaleway
 - [x] dotfiles
-  - [ ] ssh keygen (broken)
+  - [x] ssh keygen
   - [x] gitconfig
   - [x] nvim
   - [x] starship
