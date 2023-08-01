@@ -8,28 +8,38 @@
 # credits to the primeagen
 
 general {
-        colors = true
-        interval = 5
+    colors = true
+    interval = 5
 }
 
 order += "disk /"
 order += "battery all"
+order += "wireless wlp0s20f3"
+order += "ethernet enx9cebe8455856"
 order += "load"
 order += "tztime local"
 
-battery all {
-        format = "%status %percentage %remaining"
+disk "/" {
+    format = "%free"
 }
 
-tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+battery all {
+    format = "%status %percentage %remaining"
+}
+
+wireless wlp0s20f3 {
+    format_up = "W: %ip -%quality"
+}
+
+ethernet enx9cebe8455856 {
+    format_up = "E: %ip"
 }
 
 load {
-        format = "%1min"
+    format = "%1min"
 }
 
-disk "/" {
-        format = "%avail"
+tztime local {
+    format = "%Y-%m-%d %H:%M:%S"
 }
 
