@@ -149,7 +149,18 @@
   tags: packages
   when: cargo_installed.rc in [1]
 
-- name: Symbolic link to cargo for root user
+- name: Install Alacritty & Zellij Runner
+  become: true
+  become_user: "{{ user }}"
+  community.general.cargo:
+    name: "{{ item }}"
+    state: latest
+  loop:
+    - zellij-runner
+    - alacritty
+  tags: packages
+
+- name: Add rust binaries to path
   ansible.builtin.file:
     src: "/home/{{ user }}/.cargo/bin/{{ item }}"
     dest: "/usr/local/bin/{{ item }}"
@@ -157,6 +168,7 @@
     group: root
     state: link
   loop:
+    - alacritty
     - cargo
     - cargo-clippy
     - cargo-fmt
@@ -171,13 +183,7 @@
     - rust-gdbgui
     - rust-lldb
     - rustup
-
-- name: Install Zellij Runner
-  become: true
-  become_user: "{{ user }}"
-  community.general.cargo:
-    name: zellij-runner
-    state: latest
+    - zellij-runner
   tags: packages
 
 - name: Install apt tools

@@ -1,5 +1,4 @@
 packages:
-  - alacritty
   - apparmor
   - apparmor-profiles
   - apparmor-utils
