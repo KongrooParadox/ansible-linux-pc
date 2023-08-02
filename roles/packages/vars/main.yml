@@ -52,6 +52,7 @@ packages:
   - terraform-ls
   - tmux
   - traceroute
+  - tree
   - vagrant
   - virtualenv
   - vlc
