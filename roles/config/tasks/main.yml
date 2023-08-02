@@ -42,22 +42,26 @@
     mode: "0644"
   tags: config
   loop:
-    - nvim
-    - starship.toml
-    - zellij
+    - alacritty
     - i3
     - i3status
-    - alacritty
+    - monitors.xml
+    - nvim
+    - starship.toml
 
-- name: Make Zellij statusbar executable
+- name: Configure Zellij
   become: true
-  ansible.builtin.file:
-    state: file
-    path: "/home/{{ user }}/.config/zellij/plugins/statusbar.wasm"
+  ansible.builtin.copy:
+    src: "{{ item.name }}"
+    dest: "/home/{{ user }}/.config/zellij/"
     owner: "{{ user }}"
     group: "{{ user }}"
-    mode: "0750"
+    mode: "{{ item.mode }}"
   tags: config
+  loop:
+    - { name: 'zellij/config.kdl', mode: '0644' }
+    - { name: 'zellij/layouts', mode: '0644' }
+    - { name: 'zellij/plugins', mode: '0750' }
 
 - name: Add Zellij layouts
   become: true
