@@ -168,6 +168,7 @@ keybinds {
     }
     shared {
         bind "Home" { Detach; }
+        bind "Ctrl f" { Run "fd" "~/personal" "-mindepth" "1" "-maxdepth" "1" "-type" "d" "|" "fzf"; Detach; }
     }
 }
 

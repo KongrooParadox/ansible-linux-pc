@@ -8,25 +8,19 @@
     mode: "0600"
   tags: config
 
-- name: Configure zsh
+- name: Configure dotfiles in home
   become: true
   ansible.builtin.copy:
-    src: .zshrc
+    src: "{{ item }}"
     dest: "/home/{{ user }}/"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0644"
   tags: config
-
-- name: Configure Neovim
-  become: true
-  ansible.builtin.copy:
-    src: nvim
-    dest: "/home/{{ user }}/.config"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: "0644"
-  tags: config
+  loop:
+    - .zshrc
+    - .zshenv
+    - .editorconfig
 
 - name: Add root editorconfig
   become: true
@@ -38,50 +32,32 @@
     mode: "0644"
   tags: config
 
-- name: Configure Starship
+- name: Configure installed apps
   become: true
   ansible.builtin.copy:
-    src: starship.toml
-    dest: "/home/{{ user }}/.config/"
+    src: "{{ item }}"
+    dest: "/home/{{ user }}/.config"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0644"
   tags: config
+  loop:
+    - nvim
+    - starship.toml
+    - zellij
+    - i3
+    - i3status
+    - alacritty
 
-- name: Configure Zellij
+- name: Make Zellij statusbar executable
   become: true
-  ansible.builtin.copy:
-    src: zellij/config.kdl
-    dest: "/home/{{ user }}/.config/zellij/"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: "0644"
-  tags: config
-
-- name: Copy statusbar to Zellij plugins folder
-  become: true
-  ansible.builtin.copy:
-    src: zellij/plugins/statusbar.wasm
-    dest: "/home/{{ user }}/.config/zellij/plugins/"
+  ansible.builtin.file:
+    state: file
+    path: "/home/{{ user }}/.config/zellij/plugins/statusbar.wasm"
     owner: "{{ user }}"
     group: "{{ user }}"
     mode: "0750"
   tags: config
-
-- name: Create config directories
-  become: true
-  ansible.builtin.file:
-    path: "/home/{{ user }}/.config/{{ item }}"
-    state: directory
-    mode: "0755"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-  tags: config
-  loop:
-    - zellij/layouts
-    - i3
-    - i3status
-    - alacritty
 
 - name: Add Zellij layouts
   become: true
@@ -98,33 +74,6 @@
 
 - name: Configure Mate settings
   ansible.builtin.include_tasks: mate.yml
-  tags: config
-
-- name: Configure i3
-  ansible.builtin.copy:
-    src: i3config
-    dest: "/home/{{ user }}/.config/i3/config"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: "0644"
-  tags: config
-
-- name: Configure i3 status bar
-  ansible.builtin.copy:
-    src: i3status
-    dest: "/home/{{ user }}/.config/i3status/config"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: "0644"
-  tags: config
-
-- name: Configure Alacritty
-  ansible.builtin.copy:
-    src: alacritty.yml
-    dest: "/home/{{ user }}/.config/alacritty/alacritty.yml"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: "0644"
   tags: config
 
 - name: Checkout Alacritty Themes
