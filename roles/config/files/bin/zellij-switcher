@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+while true; do
+    if [[ $# -eq 1 ]]; then
+        dir=$1
+    else
+        dir=$(fdfind . ~/personal --min-depth 1 --max-depth 1 --type d | fzf)
+    fi
+
+    if [[ -z $dir ]]; then
+        exit 0
+    fi
+
+    session_name=$(basename "$dir" | tr . _)
+
+    cd $dir
+    zellij a -c $session_name
+done

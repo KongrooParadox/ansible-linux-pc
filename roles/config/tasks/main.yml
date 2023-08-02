@@ -86,3 +86,13 @@
     dest: "/home/{{ user }}/.config/alacritty/themes"
     version: master
   tags: config
+
+- name: Copy user specific scripts
+  become: true
+  ansible.builtin.copy:
+    src: "bin"
+    dest: "/home/{{ user }}/.local"
+    owner: "{{ user }}"
+    group: "{{ user }}"
+    mode: "0750"
+  tags: config

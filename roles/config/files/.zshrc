@@ -15,18 +15,14 @@ autoload -Uz compinit
 compinit
 
 #### Zellij ####
-ZELLIJ_AUTO_ATTACH=true
-ZELLIJ_RUNNER_ROOT_DIR=personal
-ZELLIJ_RUNNER_MAX_DIRS_DEPTH=2
+ZELLIJ_AUTO_ATTACH=false
+export ZELLIJ_AUTO_ATTACH
 
-export ZELLIJ_AUTO_ATTACH ZELLIJ_RUNNER_ROOT_DIR ZELLIJ_RUNNER_MAX_DIRS_DEPTH
+# Custom zellij session switcher
+bindkey -s ^f "zellij-switcher\n"
+bindkey -s ^h "zellij-switcher ~/personal/dotfiles\n"
+
 # kubectl
 source <(kubectl completion zsh)
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
-if [[ -z "$ZELLIJ" ]]; then
-    zellij-runner
-    if [[ "$ZELLIJ_AUTO_EXIT" == "true" ]]; then
-        exit
-    fi
-fi
