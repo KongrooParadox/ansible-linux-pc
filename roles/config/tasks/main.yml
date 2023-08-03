@@ -63,19 +63,6 @@
     - { name: 'zellij/layouts', mode: '0644' }
     - { name: 'zellij/plugins', mode: '0750' }
 
-- name: Add Zellij layouts
-  become: true
-  ansible.builtin.template:
-    src: "{{ item }}.j2"
-    dest: "/home/{{ user }}/.config/zellij/layouts/{{ item }}"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: "0644"
-  tags: config
-  loop:
-    - editor.kdl
-    - terminal.kdl
-
 - name: Configure Mate settings
   ansible.builtin.include_tasks: mate.yml
   tags: config
