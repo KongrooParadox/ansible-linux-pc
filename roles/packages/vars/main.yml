@@ -57,6 +57,7 @@ packages:
   - virtualenv
   - vlc
   - xclip
+  - xdotool
   - youtube-dl
   - zplug
   - zsh

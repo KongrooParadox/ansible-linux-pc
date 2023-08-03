@@ -17,4 +17,11 @@ vim.keymap.set("n", "<leader>pv", vim.cmd.Ex , {desc = '[P]roject [V]iew'})
 
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', '<Q>', '<Nop>', { silent = true })
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod u+x %<CR>", { silent = true, desc = 'Add E[X]ecution rights to current file for current user'})
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod u+x %<CR>",
+    { silent = true, desc = 'Add E[X]ecution rights to current file for current user'}
+)
+
+vim.keymap.set("n", "<C-f>",
+    "<cmd>![[ $ZELLIJ -eq 0 ]] && zellij action new-pane -f -n zellij-switcher -c -- zellij-switcher<CR>",
+    { silent = true, desc = 'Change current Zellij Session'}
+)

@@ -20,7 +20,7 @@ export ZELLIJ_AUTO_ATTACH
 
 # Custom zellij session switcher
 bindkey -s ^f "zellij-switcher\n"
-bindkey -s ^h "zellij-switcher ~/personal/dotfiles\n"
+bindkey -s '^[h' "zellij-switcher ~/personal/dotfiles\n"
 
 # kubectl
 source <(kubectl completion zsh)
