@@ -10,6 +10,7 @@ alias v='nvim'
 alias ls='ls --color=auto'
 alias ll='ls --color=auto -lh'
 alias lll='ls --color=auto -lh | less'
+alias fd='fdfind'
 ############## completion #################
 autoload -Uz compinit
 compinit
@@ -20,7 +21,8 @@ export ZELLIJ_AUTO_ATTACH
 
 # Custom zellij session switcher
 bindkey -s ^f "zellij-switcher\n"
-bindkey -s '^[h' "zellij-switcher ~/personal/dotfiles\n"
+bindkey -s '^[j' "zellij-switcher ~/personal/dotfiles\n"
+bindkey -s '^[k' "zellij-switcher ~/personal/zellij\n"
 
 # kubectl
 source <(kubectl completion zsh)

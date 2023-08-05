@@ -22,4 +22,4 @@ else
     xdotool type --delay 0 "zellij-switcher $dir"
     xdotool key KP_Enter
 fi
-exit 0
+
