@@ -38,6 +38,7 @@ packages:
   - nodejs
   - npm
   - openvpn
+  - peek
   - podman
   - pkg-config
   - python3
@@ -45,6 +46,7 @@ packages:
   - ripgrep
   - rkhunter
   - rsync
+  - screenkey
   - spotify-client
   - subversion
   - sudo
