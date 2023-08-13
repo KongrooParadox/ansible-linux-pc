@@ -194,3 +194,12 @@
     autoclean: true
     force: true
   tags: packages
+
+- name: Customize default screenkey display position
+  become: true
+  ansible.builtin.lineinfile:
+    name: /usr/share/applications/screenkey.desktop
+    state: present
+    regexp: '^Exec'
+    line: 'Exec=screenkey -p fixed --geometry 25%x10%+74%-50%'
+  tags: packages
