@@ -18,8 +18,8 @@ session_name=$(basename "$dir" | tr . _)
 if [[ -z $ZELLIJ ]]; then
     zellij a -c $session_name options --default-cwd $dir
 else
-    xdotool key --delay 0 alt+d
-    xdotool type --delay 0 "zellij-switcher $dir"
+    xdotool key --delay 5 alt+d
+    xdotool type --delay 5 --clearmodifiers "zs $dir"
     xdotool key KP_Enter
 fi
 
