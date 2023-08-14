@@ -154,3 +154,4 @@ bar {
 }
 
 exec --no-startup-id nm-applet
+exec_always --no-startup-id picom -f

@@ -46,6 +46,7 @@
     - i3
     - i3status
     - monitors.xml
+    - picom
     - nvim
     - starship.toml
 
