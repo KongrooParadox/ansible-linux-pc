@@ -25,3 +25,15 @@ vim.keymap.set("n", "<C-f>",
     "<cmd>![[ $ZELLIJ -eq 0 ]] && zellij action new-pane -f -n zellij-switcher -c -- zellij-switcher<CR>",
     { silent = true, desc = 'Change current Zellij Session'}
 )
+
+vim.keymap.set("n", "<M-u>", "<cmd>!zellij-switcher ~/personal/dotfiles <CR>",
+    { silent = true, desc = 'Go to dotfiles repo'}
+)
+
+vim.keymap.set("n", "<M-i>", "<cmd>!zellij-switcher ~/personal/zellij-sessionizer <CR>",
+    { silent = true, desc = 'Go to zellij-sessionizer repo'}
+)
+
+vim.keymap.set("n", "<M-o>", "<cmd>!zellij-switcher ~/personal/zellij <CR>",
+    { silent = true, desc = 'Go to zellij repo'}
+)

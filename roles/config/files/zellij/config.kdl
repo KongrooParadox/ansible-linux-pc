@@ -194,6 +194,7 @@ themes {
     }
 }
 
+default_shell "zsh"
 on_force_close "detach"
 simplified_ui false
 pane_frames false
