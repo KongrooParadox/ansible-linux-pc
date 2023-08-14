@@ -54,38 +54,3 @@ To install [displaylink drivers for debian](https://github.com/AdnanHodzic/displ
 
 > Thanks to [Adnan Hodzic](https://github.com/AdnanHodzic) for the driver ;)
 
-# TODO
-
-- [x] Mate Settings
-  - [x] Import keyboard shortcuts
-  - [x] Import keyboard layout
-  - [x] Import terminal settings
-- [ ] firefox
-- [ ] nvim
-  - [x] Base setup
-  - [x] Migrate to lazy
-  - [ ] remaps (git fugitive, zellij-runner, etc)
-  - [x] Find appropriate theme
-- [ ] kvm (to test)
-- [x] k8s tools
-- [ ] packer
-- [ ] vault
-- [x] podman
-- [ ] terraform
-- [x] zellij
-- [x] spotify
-- [ ] vagrant
-- [ ] asdf
-- [x] starship
-- [ ] dns setup
-- [ ] nodejs
-- [ ] Hugo
-- [ ] cloud CLI
-  - [ ] aws
-  - [ ] gcp
-  - [ ] scaleway
-- [x] dotfiles
-  - [x] ssh keygen
-  - [x] gitconfig
-  - [x] nvim
-  - [x] starship
