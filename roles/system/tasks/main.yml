@@ -38,3 +38,10 @@
     owner: "{{ user }}"
     group: "{{ user }}"
   tags: system
+
+- name: Change workstation hostname
+  become: true
+  ansible.builtin.hostname:
+    name: "{{ host }}"
+    use: debian
+  tags: system

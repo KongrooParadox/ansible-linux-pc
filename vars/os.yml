@@ -1,3 +1,4 @@
 ---
 user: robot
-upstream_debian_codename: bookworm
+debian_codename: bookworm
+host: dell-debian

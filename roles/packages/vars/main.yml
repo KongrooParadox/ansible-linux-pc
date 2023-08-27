@@ -21,6 +21,7 @@ packages:
   - google-cloud-sdk
   - gpg
   - htop
+  - hugo
   - i3
   - ipcalc
   - iptables

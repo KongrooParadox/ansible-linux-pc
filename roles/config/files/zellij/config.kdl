@@ -166,6 +166,7 @@ keybinds {
         bind "Alt b" { SwitchToMode "Tmux"; }
     }
     shared {
+        bind "Alt `" { ToggleFloatingPanes; }
         bind "Alt d" { Detach; }
         bind "Alt q" { Quit; }
     }

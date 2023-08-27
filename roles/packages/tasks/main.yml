@@ -39,7 +39,7 @@
 
 - name: Add Hashicorp repository
   ansible.builtin.apt_repository:
-    repo: "deb https://apt.releases.hashicorp.com {{ upstream_debian_codename }} main"
+    repo: "deb https://apt.releases.hashicorp.com {{ debian_codename }} main"
     state: present
   become: true
 
