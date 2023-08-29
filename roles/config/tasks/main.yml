@@ -21,6 +21,7 @@
     - .zshrc
     - .zshenv
     - .editorconfig
+    - .tmux.conf
 
 - name: Add root editorconfig
   become: true
