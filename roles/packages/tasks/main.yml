@@ -195,6 +195,15 @@
     force: true
   tags: packages
 
+- name: Add symbolik link to fix Debian fd
+  ansible.builtin.file:
+    src: "/usr/bin/fdfind"
+    dest: "/usr/bin/fd"
+    owner: root
+    group: root
+    state: link
+  tags: packages
+
 - name: Customize default screenkey display position
   become: true
   ansible.builtin.lineinfile:
