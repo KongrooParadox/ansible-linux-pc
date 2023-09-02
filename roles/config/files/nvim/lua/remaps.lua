@@ -22,18 +22,7 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod u+x %<CR>",
 )
 
 vim.keymap.set("n", "<C-f>",
-    "<cmd>silent !tmux neww tmux-switcher<CR>",
-    { silent = true, desc = 'Change current tmux Session'}
+    "<cmd>!tmux neww tmux-switcher<CR>",
+    { silent = true, desc = 'Change current tmux session'}
 )
 
-vim.keymap.set("n", "<M-u>", "<cmd>silent !tmux neww tmux-switcher ~/personal/dotfiles <CR>",
-    { silent = true, desc = 'Go to dotfiles repo'}
-)
-
-vim.keymap.set("n", "<M-i>", "<cmd>silent !tmux neww tmux-switcher ~/personal/kongroo.io <CR>",
-    { silent = true, desc = 'Go to zellij-sessionizer repo'}
-)
-
-vim.keymap.set("n", "<M-o>", "<cmd>silent !tmux neww tmux-switcher ~/personal/zellij <CR>",
-    { silent = true, desc = 'Go to zellij repo'}
-)
