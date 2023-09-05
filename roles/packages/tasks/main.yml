@@ -212,3 +212,15 @@
     regexp: '^Exec'
     line: 'Exec=screenkey -p fixed --geometry 25%x10%+74%-50%'
   tags: packages
+
+- name: Fix caja desktop shortcuts (bug with i3)
+  become: true
+  ansible.builtin.lineinfile:
+    name: "{{ item }}"
+    state: present
+    regexp: '^Exec'
+    line: 'Exec=/usr/bin/caja --no-desktop --browser .'
+  tags: packages
+  loop:
+    - /usr/share/applications/caja-browser.desktop
+    - /usr/share/applications/caja.desktop
