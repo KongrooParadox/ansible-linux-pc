@@ -3,6 +3,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt SHARE_HISTORY
+setopt EXTENDED_HISTORY
 
 ############## Aliases ###################
 alias l='ls -lra --color=auto'
