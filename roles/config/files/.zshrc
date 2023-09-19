@@ -17,11 +17,15 @@ autoload -Uz compinit
 compinit
 
 bindkey -s ^f "tmux-switcher\n"
+bindkey -s '^[y' "tmux-switcher ~/personal/homelab\n"
 bindkey -s '^[u' "tmux-switcher ~/personal/dotfiles\n"
 bindkey -s '^[i' "tmux-switcher ~/personal/kongroo.io\n"
 bindkey -s '^[o' "tmux-switcher ~/personal/zellij\n"
 
 # kubectl
 source <(kubectl completion zsh)
+complete -F __start_kubectl k
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
+
+eval "$(terraform -install-autocomplete 2>/dev/null)"

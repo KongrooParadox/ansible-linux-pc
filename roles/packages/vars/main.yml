@@ -55,6 +55,7 @@ packages:
   - subversion
   - sudo
   - tcpdump
+  - terraform
   - terraform-ls
   - tmux
   - traceroute
