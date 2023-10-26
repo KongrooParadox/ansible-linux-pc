@@ -1,10 +1,14 @@
 return {
     {
         'lukas-reineke/indent-blankline.nvim',
-        opts = {
-            char = '┊',
-            show_trailing_blankline_indent = false,
-        }
+        main = 'ibl',
+        opts = {},
+        config = function()
+            require("ibl").setup {
+                indent = { char = "|" },
+                whitespace = { remove_blankline_trail = true },
+            }
+        end,
     },
     {
         'numToStr/Comment.nvim',
