@@ -83,3 +83,5 @@ packages:
 
 flatpak_packages:
   - com.discordapp.Discord
+
+proton_bridge_version: 3.5.4

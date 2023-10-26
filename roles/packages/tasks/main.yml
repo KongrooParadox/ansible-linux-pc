@@ -243,3 +243,8 @@
   tags: packages
   become: true
   become_user: "{{ user }}"
+
+- name: Install Proton Bridge client
+  ansible.builtin.apt:
+    deb: "https://proton.me/download/bridge/protonmail-bridge_{{ proton_bridge_version }}-1_amd64.deb"
+    state: present
