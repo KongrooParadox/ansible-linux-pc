@@ -28,4 +28,5 @@ complete -F __start_kubectl k
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
-eval "$(terraform -install-autocomplete 2>/dev/null)"
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
