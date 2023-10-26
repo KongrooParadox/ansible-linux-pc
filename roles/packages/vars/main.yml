@@ -12,6 +12,8 @@ packages:
   - dconf-cli
   - direnv
   - dnsutils
+  - evolution
+  - evtest
   - fd-find
   - flatpak
   - fping
@@ -21,6 +23,7 @@ packages:
   - golang
   - google-cloud-sdk
   - gpg
+  - gpodder
   - htop
   - hugo
   - i3
@@ -30,9 +33,13 @@ packages:
   - iptables-persistent
   - jq
   - kubernetes-client
+  - lftp
+  - libevdev-dev
   - libfreetype6-dev
   - libfontconfig1-dev
   - libgtk-3-dev
+  - libncurses5
+  - libudev-dev
   - libvirt-dev
   - libxcb-xfixes0-dev
   - libxkbcommon-dev
@@ -48,10 +55,12 @@ packages:
   - pkg-config
   - python3
   - python3-pip
+  - remmina
   - ripgrep
   - rkhunter
   - rsync
   - screenkey
+  - smbclient
   - spotify-client
   - subversion
   - sudo
@@ -64,9 +73,13 @@ packages:
   - vagrant
   - virtualenv
   - vlc
+  - xboxdrv
   - xclip
   - xdotool
   - xournalpp
   - youtube-dl
   - zplug
   - zsh
+
+flatpak_packages:
+  - com.discordapp.Discord
