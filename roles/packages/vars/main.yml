@@ -73,6 +73,7 @@ packages:
   - vagrant
   - virtualenv
   - vlc
+  - wireguard
   - xboxdrv
   - xclip
   - xdotool
