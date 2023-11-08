@@ -114,3 +114,16 @@
   ansible.builtin.systemd:
     daemon_reload: true
   tags: config
+
+- name: Configure Wireguard tunnels (home and secondary site)
+  become: true
+  ansible.builtin.copy:
+    src: "wireguard/{{ item }}"
+    dest: "/etc/wireguard"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  tags: config
+  loop:
+    - wg0.conf
+    - wg1.conf
