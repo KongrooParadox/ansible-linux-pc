@@ -96,7 +96,7 @@
     mode: "0755"
   tags: config
 
-- name: Copy xboxdrv config and service file
+- name: Configure xboxdrv and add service
   become: true
   ansible.builtin.copy:
     src: "xboxdrv/{{ item.file }}"
@@ -109,10 +109,8 @@
     - { file: 'wiiu.xboxdrv', folder: '/etc/xboxdrv/' }
     - { file: 'xboxdrv.service', folder: '/etc/systemd/system/' }
 
-- name: Reload xboxdrv service
+- name: Reload systemd daemon
   become: true
   ansible.builtin.systemd:
     daemon_reload: true
-    name: xboxdrv
-    state: started
   tags: config
