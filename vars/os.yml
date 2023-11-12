@@ -1,4 +1,4 @@
 ---
 user: robot
 debian_codename: bookworm
-host: dell-debian
+host: inspiron-debian
