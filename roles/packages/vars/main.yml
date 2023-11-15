@@ -83,6 +83,7 @@ packages:
   - zsh
 
 flatpak_packages:
+  - org.kde.krita
   - com.discordapp.Discord
 
 proton_bridge_version: 3.5.4
