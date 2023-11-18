@@ -27,7 +27,7 @@ battery all {
     format = "%status %percentage %remaining"
 }
 
-wireless wlp0s20f3 {
+wireless wlp2s0 {
     format_up = "W: %ip -%quality"
 }
 
