@@ -14,7 +14,7 @@ general {
 
 order += "disk /"
 order += "battery all"
-order += "wireless wlp0s20f3"
+order += "wireless wlp2s0"
 order += "ethernet enx9cebe8455856"
 order += "load"
 order += "tztime local"
