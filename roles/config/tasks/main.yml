@@ -68,6 +68,7 @@
 - name: Configure Mate settings
   ansible.builtin.include_tasks: mate.yml
   tags: config
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Checkout Alacritty Themes
   ansible.builtin.git:

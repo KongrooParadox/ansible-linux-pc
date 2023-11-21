@@ -1,4 +1,5 @@
 ---
 user: robot
 debian_codename: bookworm
-host: inspiron-debian
+debian_host: inspiron-debian
+arch_host: baldur-arch

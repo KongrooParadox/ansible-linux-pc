@@ -1,28 +1,23 @@
 packages:
   - apparmor
-  - apparmor-profiles
-  - apparmor-utils
   - blueman
   - buildah
-  - chkrootkit
   - clamav
   - clamtk
   - cmake
   - curl
-  - dconf-cli
   - direnv
   - dnsutils
   - evolution
   - evtest
-  - fd-find
+  - fd
   - flatpak
   - fping
   - fzf
   - gcc
   - git
-  - golang
-  - google-cloud-sdk
-  - gpg
+  - go
+  - gnupg
   - gpodder
   - htop
   - hugo
@@ -30,19 +25,9 @@ packages:
   - inkscape
   - ipcalc
   - iptables
-  - iptables-persistent
   - jq
-  - kubernetes-client
+  - kubectl
   - lftp
-  - libevdev-dev
-  - libfreetype6-dev
-  - libfontconfig1-dev
-  - libgtk-3-dev
-  - libncurses5
-  - libudev-dev
-  - libvirt-dev
-  - libxcb-xfixes0-dev
-  - libxkbcommon-dev
   - make
   - net-tools
   - nmap
@@ -54,33 +39,65 @@ packages:
   - podman
   - pkg-config
   - python3
-  - python3-pip
   - remmina
   - ripgrep
   - rkhunter
   - rsync
   - screenkey
   - smbclient
-  - spotify-client
   - subversion
   - sudo
   - tcpdump
   - terraform
-  - terraform-ls
   - tmux
   - traceroute
   - tree
   - vagrant
-  - virtualenv
   - vlc
-  - wireguard
-  - xboxdrv
+  - wireguard-tools
   - xclip
   - xdotool
   - xournalpp
-  - youtube-dl
-  - zplug
   - zsh
+
+pacman_packages:
+  - helm
+  - python-pip
+  - python-virtualenv
+  - sheldon
+  - spotify-launcher
+
+aur_packages:
+  - greetd-gtkgreet
+  # - xboxdrv
+
+apt_packages:
+  - apparmor-profiles
+  - apparmor-utils
+  - chkrootkit
+  - dconf-cli
+  - fd-find
+  - golang
+  - google-cloud-sdk
+  - gpg
+  - iptables-persistent
+  - kubernetes-client
+  - libevdev-dev
+  - libfreetype6-dev
+  - libfontconfig1-dev
+  - libgtk-3-dev
+  - libncurses5
+  - libudev-dev
+  - libvirt-dev
+  - libxcb-xfixes0-dev
+  - libxkbcommon-dev
+  - python3-pip
+  - spotify-client
+  - terraform-ls
+  - virtualenv
+  - wireguard
+  - xboxdrv
+  - youtube-dl
 
 flatpak_packages:
   - org.kde.krita

@@ -6,42 +6,63 @@
     state: present
     update_cache: true
   tags: packages
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Ensure packages are up-to-date
+  become: true
+  community.general.pacman:
+    update_cache: true
+    upgrade: true
+  tags: packages
+  when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Add Google Cloud repository key
   ansible.builtin.apt_key:
     url: "https://packages.cloud.google.com/apt/doc/apt-key.gpg"
     state: present
   become: true
+  tags: packages
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Add Google Cloud repository
   ansible.builtin.apt_repository:
     repo: "deb https://packages.cloud.google.com/apt cloud-sdk main"
     state: present
   become: true
+  tags: packages
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Add Spotify repository key
   ansible.builtin.apt_key:
     url: "https://download.spotify.com/debian/pubkey_7A3A762FAFD4A51F.gpg"
     state: present
   become: true
+  tags: packages
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Add Spotify repository
   ansible.builtin.apt_repository:
     repo: "deb http://repository.spotify.com stable non-free"
     state: present
   become: true
+  tags: packages
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Add Hashicorp repository key
   ansible.builtin.apt_key:
     url: "https://apt.releases.hashicorp.com/gpg"
     state: present
   become: true
+  tags: packages
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Add Hashicorp repository
   ansible.builtin.apt_repository:
     repo: "deb https://apt.releases.hashicorp.com {{ debian_codename }} main"
     state: present
   become: true
+  tags: packages
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Ensure apt Neovim is not installed
   become: true
@@ -49,6 +70,7 @@
     name: neovim
     state: absent
   tags: packages
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Install Neovim latest stable release
   become: true
@@ -59,15 +81,33 @@
     group: "{{ user }}"
     mode: "0755"
   tags: packages
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Install apt tools
   become: true
   ansible.builtin.apt:
-    name: "{{ packages }}"
+    name: "{{ packages + apt_packages }}"
     state: present
     autoclean: true
     force: true
   tags: packages
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: Install pacman tools
+  become: true
+  community.general.pacman:
+    name: "{{ packages + pacman_packages }}"
+    state: present
+  tags: packages
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Install AUR packages
+  kewlfft.aur.aur:
+    name: "{{ aur_packages }}"
+    use: auto
+    state: present
+  become: true
+  become_user: "{{ user }}"
 
 - name: "Create FiraCode font directory for {{ user }}"
   become: true
@@ -203,6 +243,7 @@
     group: root
     state: link
   tags: packages
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Customize default screenkey display position
   become: true
@@ -224,6 +265,7 @@
   loop:
     - /usr/share/applications/caja-browser.desktop
     - /usr/share/applications/caja.desktop
+  when: ansible_facts['os_family'] == "Debian"
 
 - name: Add the flathub flatpak repository remote to the user installation
   community.general.flatpak_remote:
@@ -248,3 +290,4 @@
   ansible.builtin.apt:
     deb: "https://proton.me/download/bridge/protonmail-bridge_{{ proton_bridge_version }}-1_amd64.deb"
     state: present
+  when: ansible_facts['os_family'] == "Debian"
