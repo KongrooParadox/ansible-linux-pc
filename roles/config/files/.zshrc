@@ -15,6 +15,7 @@ alias fd='fdfind'
 ############## completion #################
 autoload -Uz compinit
 compinit
+autoload -U +X bashcompinit && bashcompinit
 
 bindkey -s ^f "tmux-switcher\n"
 bindkey -s '^[y' "tmux-switcher ~/personal/homelab\n"
@@ -28,5 +29,4 @@ complete -F __start_kubectl k
 eval "$(direnv hook zsh)"
 eval "$(starship init zsh)"
 
-autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform

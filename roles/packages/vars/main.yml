@@ -10,13 +10,11 @@ packages:
   - dnsutils
   - evolution
   - evtest
-  - fd
   - flatpak
   - fping
   - fzf
   - gcc
   - git
-  - go
   - gnupg
   - gpodder
   - htop
@@ -26,7 +24,6 @@ packages:
   - ipcalc
   - iptables
   - jq
-  - kubectl
   - lftp
   - make
   - net-tools
@@ -61,14 +58,33 @@ packages:
   - zsh
 
 pacman_packages:
+  - chromium
+  - devtools
+  - discord
+  - fd
+  - firefox
+  - glfw-wayland
+  - go
+  - greetd
   - helm
+  - kubectl
+  - i3status
+  - man-db
+  - mesa
   - python-pip
+  - python-psutil
   - python-virtualenv
+  - qt5-wayland
   - sheldon
   - spotify-launcher
+  - sway
+  - wofi
+  - xorg-xwayland
+  - xorg-xlsclients
 
 aur_packages:
   - greetd-gtkgreet
+  - protonmail-bridge
   # - xboxdrv
 
 apt_packages:

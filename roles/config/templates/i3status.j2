@@ -14,7 +14,11 @@ general {
 
 order += "disk /"
 order += "battery all"
+{% if ansible_facts['os_family'] == 'Debian' %}
 order += "wireless wlp2s0"
+{% elif ansible_facts['os_family'] == 'Archlinux' %}
+order += "wireless wlan0"
+{% endif %}
 order += "ethernet enx9cebe8455856"
 order += "load"
 order += "tztime local"
@@ -27,7 +31,11 @@ battery all {
     format = "%status %percentage %remaining"
 }
 
+{% if ansible_facts['os_family'] == 'Debian' %}
 wireless wlp2s0 {
+{% elif ansible_facts['os_family'] == 'Archlinux' %}
+wireless wlan0 {
+{% endif %}
     format_up = "W: %ip -%quality"
 }
 
