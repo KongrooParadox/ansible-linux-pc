@@ -49,6 +49,17 @@
     - picom
     - nvim
     - starship.toml
+    - sway
+
+- name: Configure greetd
+  become: true
+  ansible.builtin.copy:
+    src: "greetd"
+    dest: "/etc/"
+    owner: "root"
+    group: "root"
+    mode: "0644"
+  tags: config
 
 - name: Configure i3status
   become: true
