@@ -14,7 +14,7 @@
   ansible.builtin.user:
     name: "{{ user }}"
     comment: "{{ user }}"
-    groups: "{{ user }}"
+    groups: "{{ user }},wheel"
     shell: /bin/zsh
   tags: system
   when: ansible_facts['os_family'] == "Archlinux"

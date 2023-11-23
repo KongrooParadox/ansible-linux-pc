@@ -26,6 +26,7 @@ packages:
   - jq
   - lftp
   - make
+  - neofetch
   - net-tools
   - nmap
   - nodejs
@@ -78,11 +79,14 @@ pacman_packages:
   - sheldon
   - spotify-launcher
   - sway
+  - usbutils
   - wofi
   - xorg-xwayland
   - xorg-xlsclients
 
 aur_packages:
+  - displaylink
+  - evdi-git
   - greetd-gtkgreet
   - protonmail-bridge
   # - xboxdrv
