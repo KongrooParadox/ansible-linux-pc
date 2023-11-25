@@ -159,3 +159,15 @@
   loop:
     - bluetooth
     - displaylink
+  when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Enable services
+  become: true
+  ansible.builtin.systemd:
+    name: "{{ item }}"
+    enabled: true
+    state: started
+  tags: config
+  loop:
+    - bluetooth
+  when: ansible_facts['os_family'] == "Debian"
