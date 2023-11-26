@@ -122,5 +122,6 @@ apt_packages:
 flatpak_packages:
   - org.kde.krita
   - com.discordapp.Discord
+  - com.parsecgaming.parsec
 
 proton_bridge_version: 3.5.4
