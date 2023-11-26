@@ -65,3 +65,12 @@
     use: systemd
   tags: system
   when: ansible_facts['os_family'] == "Archlinux"
+
+- name: Enable grub os prober (to detect other distros)
+  become: true
+  ansible.builtin.lineinfile:
+    name: /etc/default/grub
+    state: present
+    regexp: '^GRUB_DISABLE_OS_PROBER'
+    line: 'GRUB_DISABLE_OS_PROBER=false'
+  tags: system
