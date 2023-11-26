@@ -38,7 +38,7 @@
 - name: Install apt tools
   become: true
   ansible.builtin.apt:
-    name: "{{ packages + apt_packages }}"
+    name: "{{ packages_common + packages_apt }}"
     state: present
     autoclean: true
     force: true
@@ -48,14 +48,14 @@
 - name: Install pacman tools
   become: true
   community.general.pacman:
-    name: "{{ packages + pacman_packages }}"
+    name: "{{ packages_common + packages_pacman }}"
     state: present
   tags: packages
   when: ansible_facts['os_family'] == "Archlinux"
 
 - name: Install AUR packages
   kewlfft.aur.aur:
-    name: "{{ aur_packages }}"
+    name: "{{ packages_aur }}"
     use: auto
     state: present
   become: true
@@ -232,7 +232,7 @@
 
 - name: Install flatpak packages from flathub for current user
   community.general.flatpak:
-    name: "{{ flatpak_packages }}"
+    name: "{{ packages_flatpak }}"
     state: present
     method: user
   tags: packages
@@ -241,6 +241,6 @@
 
 - name: Install Proton Bridge client
   ansible.builtin.apt:
-    deb: "https://proton.me/download/bridge/protonmail-bridge_{{ proton_bridge_version }}-1_amd64.deb"
+    deb: "https://proton.me/download/bridge/protonmail-bridge_{{ packages_proton_bridge_version }}-1_amd64.deb"
     state: present
   when: ansible_facts['os_family'] == "Debian"

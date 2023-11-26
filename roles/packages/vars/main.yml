@@ -1,4 +1,4 @@
-packages:
+packages_common:
   - apparmor
   - blueman
   - buildah
@@ -58,7 +58,7 @@ packages:
   - xournalpp
   - zsh
 
-pacman_packages:
+packages_pacman:
   - chromium
   - devtools
   - discord
@@ -84,14 +84,14 @@ pacman_packages:
   - xorg-xwayland
   - xorg-xlsclients
 
-aur_packages:
+packages_aur:
   - displaylink
   - evdi-git
   - greetd-gtkgreet
   - protonmail-bridge
   # - xboxdrv
 
-apt_packages:
+packages_apt:
   - apparmor-profiles
   - apparmor-utils
   - chkrootkit
@@ -119,9 +119,9 @@ apt_packages:
   - xboxdrv
   - youtube-dl
 
-flatpak_packages:
+packages_flatpak:
   - org.kde.krita
   - com.discordapp.Discord
   - com.parsecgaming.parsec
 
-proton_bridge_version: 3.5.4
+packages_proton_bridge_version: 3.5.4

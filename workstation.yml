@@ -1,6 +1,6 @@
 ---
-- hosts: localhost
-  name: Install & configure linux workstation
+- name: Install & configure linux workstation
+  hosts: localhost
   become: true
   become_user: root
   roles:
