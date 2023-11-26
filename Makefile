@@ -8,20 +8,25 @@ init:
 	ansible-galaxy install -r requirements.yml
 
 system:
-	ansible-playbook workstation.yml --tags system
+	@$(call lint_exec,"system")
 
 packages:
-	ansible-playbook workstation.yml --tags packages
+	@$(call lint_exec,"packages")
 
 config:
-	ansible-playbook workstation.yml --tags config
+	@$(call lint_exec,"config")
 
 all:
-	ansible-playbook workstation.yml --tags all
+	@$(call lint_exec,"all")
 
 debug:
-	ansible-playbook -v workstation.yml --tags all
+	@$(call lint_exec,"all","-v")
 
 verbose:
-	ansible-playbook -vvv workstation.yml --tags all
+	@$(call lint_exec,"all","-vvv")
 
+define lint_exec
+	$(eval $@_TAG = $(1))
+	$(eval $@_FLAGS = $(2))
+	ansible-lint; test $$? -eq 0 && ansible-playbook ${$@_FLAGS} workstation.yml --tags ${$@_TAG} || echo "Fix ansible-lint before running playbook !"
+endef
