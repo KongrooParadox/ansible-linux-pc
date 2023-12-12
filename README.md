@@ -15,12 +15,8 @@ source ~/.bashrc
 
 Setup ansible workdir of your choice, and setup virtualenv for ansible projects :
 ```shell
-mkdir -p ~/personal
-cd !$
-echo "#
-# .envrc
-#
-layout python3" > .envrc
+git clone https://github.com/KongrooParadox/ansible-linux-pc.git ~/personal/dotfiles
+cd ~/personal/dotfiles
 direnv allow .
 ```
 
