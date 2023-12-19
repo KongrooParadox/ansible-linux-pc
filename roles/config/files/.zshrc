@@ -24,7 +24,7 @@ bindkey -s '^[i' "tmux-switcher ~/personal/kongroo.io\n"
 bindkey -s '^[o' "tmux-switcher ~/personal/zellij\n"
 
 # Maximum amount of disk space used by ccache
-ccache -M 50G
+# ccache -M 50G
 
 # kubectl
 source <(kubectl completion zsh)
