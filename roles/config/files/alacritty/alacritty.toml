@@ -1,0 +1,26 @@
+import = ["/home/robot/.config/alacritty/themes/themes/github_dimmed.yaml"]
+
+[env]
+TERM = "alacritty"
+
+[font]
+size = 14.0
+
+[font.bold]
+family = "FiraCodeNerdFont"
+style = "Bold"
+
+[font.bold_italic]
+family = "FiraCodeNerdFont"
+style = "Bold Italic"
+
+[font.italic]
+family = "FiraCodeNerdFont"
+style = "Italic"
+
+[font.normal]
+family = "FiraCodeNerdFont"
+style = "Regular"
+
+[window]
+opacity = 1.0
